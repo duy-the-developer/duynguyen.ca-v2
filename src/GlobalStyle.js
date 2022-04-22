@@ -3,6 +3,26 @@ import { createGlobalStyle } from "styled-components";
 export const GlobalStyle = createGlobalStyle`
 :root {
     font-family: 'Press Start 2P', cursive;
+    background-color: var(--color-blue-darker);
+	font-size: 100%;
+	margin: 5px;
+	color: var(--color-pink-light);
+
+	/* Old School Apple Terminal Palette */
+    --color-green: rgb(51, 255, 51);
+	--color-black: rgb(0,0,0);
+
+	/* Old School VT320 Terminal Palette */
+	--color-amber-dark: rgb(255,176,0);
+	--color-amber-light: rgb(255,204,0);
+	--color-gray-dark: rgb(35,35,35);
+
+	/* Cyberpunk Color Palette */
+	--color-pink-dark: rgb(113,28,145);
+	--color-pink-light: rgb(234,0,217);
+	--color-blue-light: rgb(10,189,198);
+	--color-blue-dark: rgb(19,62,124);
+	--color-blue-darker: rgb(9,24,51);
 }
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
@@ -22,13 +42,16 @@ table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed, 
 figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+time, mark, audio, video, input {
 	margin: 0;
 	padding: 0;
 	border: 0;
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+	background-color: inherit;
+    color: inherit;
+	padding: 0 0 5px 0;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -38,6 +61,8 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 }
+
+
 ol, ul {
 	list-style: none;
 }
