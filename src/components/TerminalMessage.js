@@ -9,13 +9,16 @@ export const TerminalMessage = ({ message, type }) => {
     if (i < message.length) {
       setPrintingText(message.substring(0, i + 1));
       i++;
-      setTimeout(typeWriter, 25);
+      setTimeout(typeWriter, 15);
     }
   };
 
   useEffect(() => {
     typeWriter();
   }, []);
+
+  if (type === "url") {
+  }
 
   return <StyledMessage className={`${type}`}>{printingText}</StyledMessage>;
 };
@@ -27,6 +30,11 @@ const StyledMessage = styled.p`
     text-shadow: 0 0 5px var(--color-amber-light);
   }
 
+  /* &.message {
+    color: var(--color-green);
+    text-shadow: 0 0 5px var(--color-green);
+  } */
+
   &.error {
     color: var(--color-pink-light);
     text-shadow: 0 0 5px var(--color-pink-light);
@@ -37,3 +45,5 @@ const StyledMessage = styled.p`
     text-shadow: 0 0 5px var(--color-blue-light);
   }
 `;
+
+const StyledUrl = styled.a``;

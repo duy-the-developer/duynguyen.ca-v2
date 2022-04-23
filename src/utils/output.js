@@ -1,3 +1,9 @@
+const emptyLine = {
+  type: `space`,
+  content: `
+`,
+};
+
 export const initialOutput = [
   {
     type: `ascii`,
@@ -27,19 +33,30 @@ export const initialOutput = [
     type: `ascii`,
     content: `*************************************************************************************`,
   },
+  emptyLine,
   {
     type: `message`,
-    content: `
+    content: `DUYNGUYEN.CA INTERACTIVE PORTFOLIO TERMINAL
 `,
   },
+  emptyLine,
   {
     type: `message`,
-    content: `duynguyen.ca interactive portfolio terminal.
-Type 'help' for a list of all available commands.`,
+    content: `Local Time: ${new Date()}
+Browser: ${navigator.appName}
+Engine: ${navigator.product}
+User Agent: ${navigator.userAgent}
+Online: ${navigator.onLine}`,
   },
-
-  //   {
-  //     type: `message`,
-  //     content: `Type 'help' for a list of all available commands.`,
-  //   },
+  emptyLine,
+  {
+    type: `message`,
+    content: `Type 'help' for a list of all available commands.`,
+  },
+  emptyLine,
+  {
+    type: `message`,
+    content: `My name is Duy Nguyen and I am a Full Stack Developer. Welcome to my terminal-themed interactive portfolio.`,
+  },
+  emptyLine,
 ];

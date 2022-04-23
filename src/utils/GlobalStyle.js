@@ -5,10 +5,10 @@ export const GlobalStyle = createGlobalStyle`
     background-color: var(--color-gray-dark);
 	height: calc(100vh - var(--padding-page)*2 - var(--margin-page)*2);
 
-	color: var(--color-amber-light);
+	color: var(--color-green);
     font-family: 'Press Start 2P', cursive;
 	font-size: 75%;
-	text-shadow: 0 0 5px var(--color-amber-light);
+	text-shadow: 0 0 5px var(--color-green);
 
 	--padding-page: 0px;
 	--margin-page: 0px;

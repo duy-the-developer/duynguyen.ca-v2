@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import { Directory } from "./components/Directory";
 import { TerminalMessage } from "./components/TerminalMessage";
-import { initialOutput } from "./utils/initialStates";
+import { initialOutput } from "./utils/output";
 
 const App = () => {
   const [directory, setDirectory] = useState("visitor@duynguyen.ca % ");
@@ -15,29 +15,29 @@ const App = () => {
 
   const commands = {
     welcome: {
-      description: `initiate the welcome sequence`,
+      description: `Initiate the welcome sequence`,
       function: () => {
         return initialOutput;
       },
     },
     help: {
-      description: `list all available commands`,
+      description: `List all available commands`,
     },
     about: {
-      description: `information about me`,
+      description: `Information about Duy`,
+    },
+    work: {
+      description: `List of all projects`
     },
     contact: {
-      description: `list all available contact options`,
+      description: `List all contact options`,
     },
     clear: {
-      description: `clear console messages`,
+      description: `Clear console messages`,
       function: () => {
         console.log("clear");
         setOutput([]);
       },
-    },
-    ls: {
-      description: `list `,
     },
   };
 
@@ -47,8 +47,17 @@ const App = () => {
     setInputWidth(`0ch`);
   };
 
+  const displayHelp = () => {
+    return Object.keys(commands).map((command) => {
+      return {
+        type: `message`,
+        content: `${command}: ${commands[command].description}`,
+      };
+    });
+  };
+
   const handleSubmit = (e) => {
-    const userInput = e.target.value;
+    const userInput = e.target.value.split(" ")[0];
     const isHelp = userInput === "help";
     let outputMessage = "";
 
@@ -61,12 +70,7 @@ const App = () => {
 
     if (commands.hasOwnProperty(userInput)) {
       if (isHelp) {
-        outputMessage = Object.keys(commands).map((command) => {
-          return {
-            type: `message`,
-            content: `${command} - ${commands[command].description}`,
-          };
-        });
+        outputMessage = displayHelp();
       } else {
         outputMessage = [...commands[userInput].function()];
       }
@@ -80,6 +84,7 @@ const App = () => {
     }
 
     setOutput([...output, previousCommand, ...outputMessage]);
+    window.scrollTo(0, document.body.scrollHeight);
   };
 
   const handleInputChange = (e) => {
@@ -89,45 +94,49 @@ const App = () => {
   };
 
   return (
-    <StyledApp
-      className="App"
-      onClick={() => {
-        inputElem.current.focus();
-      }}
-    >
-      {output.map((message) => {
-        const { content, type } = message;
-        return (
-          <TerminalMessage
-            key={output.indexOf(message)}
-            message={content}
-            type={type}
+    <>
+      <StyledApp
+        className="App"
+        onClick={() => {
+          inputElem.current.focus();
+        }}
+      >
+        {output.map((message) => {
+          const { content, type } = message;
+          return (
+            <TerminalMessage
+              key={output.indexOf(message)}
+              message={content}
+              type={type}
+            />
+          );
+        })}
+        <div className="input-container">
+          <Directory for="input" content={directory} />
+          <StyledTerminalInput
+            autoFocus
+            ref={inputElem}
+            type="text"
+            value={input}
+            onChange={handleInputChange}
+            onKeyPress={(e) => {
+              if (e.key === "Enter") {
+                handleSubmit(e);
+              }
+            }}
+            style={{ width: inputWidth }}
           />
-        );
-      })}
-      <div className="input-container">
-        <Directory for="input" content={directory} />
-        <StyledTerminalInput
-          autoFocus
-          ref={inputElem}
-          type="text"
-          value={input}
-          onChange={handleInputChange}
-          onKeyPress={(e) => {
-            if (e.key === "Enter") {
-              handleSubmit(e);
-            }
-          }}
-          style={{ width: inputWidth }}
-        />
-      </div>
-    </StyledApp>
+        </div>
+      </StyledApp>
+    </>
   );
 };
 
 export default App;
 
 const StyledApp = styled.div`
+  overflow: hidden;
+
   line-height: 1.5ch;
   display: flex;
   flex-direction: column;
@@ -137,7 +146,7 @@ const StyledApp = styled.div`
 const StyledTerminalInput = styled.input`
   @keyframes blinkingCursor {
     50% {
-      border-right-color: var(--color-amber-light);
+      border-right-color: var(--color-green);
     }
     100% {
       border-right-color: transparent;
