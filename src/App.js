@@ -51,7 +51,6 @@ const App = () => {
 
         // 3. construct new path using processed current and input path
         newPathArr = [...currentPathArr, ...filteredInputArr];
-        console.log(newPathArr);
 
         try {
           for (let i = 0; i < newPathArr.length; i++) {

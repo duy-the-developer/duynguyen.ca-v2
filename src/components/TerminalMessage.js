@@ -10,7 +10,6 @@ export const TerminalMessage = ({ message, type }) => {
       setPrintingText(message.substring(0, i + 1));
       i++;
       setTimeout(typeWriter, 15);
-      console.log(new Date());
     } else {
       clearTimeout(typeWriter);
     }
