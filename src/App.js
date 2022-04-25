@@ -1,32 +1,37 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
-import { v4 as uuidv4 } from "uuid";
 
 import { Directory } from "./components/Directory";
 import { TerminalMessage } from "./components/TerminalMessage";
-import { home } from "./utils/output";
+import { siteMap } from "./utils/output";
 
 const App = () => {
   const [directory, setDirectory] = useState("");
   const [input, setInput] = useState("");
   const [inputWidth, setInputWidth] = useState(0);
-  const [output, setOutput] = useState(home["welcome.txt"].content);
-  const [currentFolder, setCurrentFolder] = useState(home);
+  const [output, setOutput] = useState(siteMap["welcome.txt"].content);
+  const [currentFolder, setCurrentFolder] = useState(siteMap);
 
   const inputElem = useRef(null);
 
   const commands = {
-    help: {
-      description: `List all available commands`,
-    },
     list: {
       description: `List all files and folders in the current directory`,
+      function: () => {
+        return Object.keys(currentFolder)
+          .filter((key) => {
+            return key !== "type";
+          })
+          .map((objectName) => {
+            return { type: `message`, content: `${objectName}` };
+          });
+      },
     },
     cd: {
       description: `Change directory - Syntax: 'cd <directory path>' - Example: 'cd /blog'`,
       function: (inputPath) => {
         // 1. iterate over inputPath
-        let localFolder = home;
+        let localFolder = siteMap;
         const inputPathArr = inputPath.split("/");
         const currentPathArr = directory.split("/");
         currentPathArr.shift();
@@ -76,6 +81,21 @@ const App = () => {
     },
     cat: {
       description: `View file content - Syntax: 'cat <file name>' - Example: 'cat intro.txt'`,
+      function: (fileName) => {
+        if (
+          currentFolder.hasOwnProperty(fileName) &&
+          currentFolder[fileName].type === "file"
+        ) {
+          return currentFolder[fileName].content;
+        } else {
+          return [
+            {
+              type: `error`,
+              content: `[ Error ] - cat: no such file: ${fileName}`,
+            },
+          ];
+        }
+      },
     },
     clear: {
       description: `Clear console messages`,
@@ -83,6 +103,16 @@ const App = () => {
         setOutput([]);
       },
     },
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  },[]);
+
+  const scrollToBottom = () => {
+    const terminalElem = document.getElementsByClassName("App")[0];
+    terminalElem.scrollTop = terminalElem.scrollHeight;
+    setTimeout(scrollToBottom, 500);
   };
 
   const resetInput = (e) => {
@@ -101,9 +131,10 @@ const App = () => {
   };
 
   const handleSubmit = (e) => {
-    const userInput = e.target.value.split(" ")[0];
-    const inputParam = e.target.value.split(" ")[1];
-    const isHelp = userInput === "help";
+    const inputArr = e.target.value.split(" ");
+    const command = inputArr.shift();
+    const inputParam = inputArr.join("");
+    const isHelp = command === "help";
     let outputMessage = "";
 
     const previousCommand = {
@@ -113,17 +144,15 @@ const App = () => {
 
     resetInput(e);
 
-    if (commands.hasOwnProperty(userInput)) {
-      if (isHelp) {
-        outputMessage = displayHelp();
-      } else {
-        outputMessage = [...commands[userInput].function(inputParam)];
-      }
+    if (isHelp) {
+      outputMessage = displayHelp();
+    } else if (commands.hasOwnProperty(command)) {
+      outputMessage = [...commands[command].function(inputParam)];
     } else {
       outputMessage = [
         {
           type: `error`,
-          content: `[ ERROR ] - '${userInput}' is not a valid command. Type 'help' for a list of available commands.`,
+          content: `[ ERROR ] - '${command}' is not a valid command. Type 'help' for a list of available commands.`,
         },
       ];
     }
@@ -138,49 +167,51 @@ const App = () => {
   };
 
   return (
-    <>
-      <StyledApp
-        className="App"
-        onClick={() => {
-          inputElem.current.focus();
-        }}
-      >
-        {output.map((message) => {
-          const { content, type } = message;
-          return (
-            <TerminalMessage key={uuidv4()} message={content} type={type} />
-          );
-        })}
-        <div className="input-container">
-          <Directory
-            for="input"
-            content={`visitor@duynguyen.ca${directory} %  `}
-          />
-          <StyledTerminalInput
-            autoFocus
-            ref={inputElem}
-            type="text"
-            value={input}
-            onChange={handleInputChange}
-            onKeyPress={(e) => {
-              if (e.key === "Enter") {
-                handleSubmit(e);
-              }
-            }}
-            style={{ width: inputWidth }}
-          />
-        </div>
-      </StyledApp>
-    </>
+    <StyledApp
+      className="App"
+      onClick={() => {
+        inputElem.current.focus();
+      }}
+    >
+      {output.map((message, i) => {
+        const { content, type } = message;
+        return <TerminalMessage key={i} message={content} type={type} />;
+      })}
+      <div className="input-container">
+        <Directory
+          for="input"
+          content={`visitor@duynguyen.ca${directory} %  `}
+        />
+        <StyledTerminalInput
+          autoFocus
+          ref={inputElem}
+          type="text"
+          value={input}
+          onChange={handleInputChange}
+          onKeyPress={(e) => {
+            if (e.key === "Enter") {
+              handleSubmit(e);
+            }
+          }}
+          style={{ width: inputWidth }}
+        />
+      </div>
+    </StyledApp>
   );
 };
 
 export default App;
 
 const StyledApp = styled.div`
+  position: absolute;
+  bottom: 0;
   overflow: hidden;
   display: flex;
+
+  scroll-behavior: smooth;
+
   flex-direction: column;
+  max-height: calc(100vh - var(--padding-page) * 2 - var(--margin-page) * 2);
   height: calc(100vh - var(--padding-page) * 2 - var(--margin-page) * 2);
 `;
 

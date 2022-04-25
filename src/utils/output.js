@@ -4,7 +4,7 @@ export const emptyLine = {
 `,
 };
 
-export const home = {
+export const siteMap = {
   ["intro.txt"]: { type: `file`, content: [] },
   ["welcome.txt"]: {
     type: `file`,
@@ -40,7 +40,7 @@ export const home = {
       emptyLine,
       {
         type: `message`,
-        content: `DUYNGUYEN.CA INTERACTIVE PORTFOLIO TERMINAL`,
+        content: `DUYNGUYEN.CA INTERACTIVE PORTFOLIO TERMINAL V1.9`,
       },
       emptyLine,
       {
@@ -62,8 +62,12 @@ Online: ${navigator.onLine}`,
       emptyLine,
     ],
   },
-  ["contact.txt"]: [{ type: `file`, content: [] }],
-  blog: { type: `folder` },
+  ["contact.txt"]: { type: `file`, content: [] },
+  blog: {
+    type: `folder`,
+    ["article1.txt"]: { type: "file", content: [] },
+    ["article2.txt"]: { type: "file", content: [] },
+  },
   work: {
     type: `folder`,
     tutor: { type: `folder` },

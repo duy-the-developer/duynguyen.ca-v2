@@ -10,6 +10,9 @@ export const TerminalMessage = ({ message, type }) => {
       setPrintingText(message.substring(0, i + 1));
       i++;
       setTimeout(typeWriter, 15);
+      console.log(new Date());
+    } else {
+      clearTimeout(typeWriter);
     }
   };
 
@@ -34,7 +37,7 @@ const StyledMessage = styled.div`
     font-size: 125%;
 
     color: var(--color-pink-light);
-    text-shadow: 0 0 5px var(--color-amber-light);
+    text-shadow: 0 0 5px var(--color-pink-light);
   }
 
   &.error {
