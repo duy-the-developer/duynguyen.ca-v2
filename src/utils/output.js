@@ -64,5 +64,9 @@ Online: ${navigator.onLine}`,
   },
   ["contact.txt"]: [{ type: `file`, content: [] }],
   blog: { type: `folder` },
-  work: { type: `folder` },
+  work: {
+    type: `folder`,
+    tutor: { type: `folder` },
+    projects: { type: `folder` },
+  },
 };

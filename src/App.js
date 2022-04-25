@@ -23,28 +23,54 @@ const App = () => {
     },
     cd: {
       description: `Change directory - Syntax: 'cd <directory path>' - Example: 'cd /blog'`,
-      function: (path) => {
-        const pathSteps = path.split("/");
+      function: (inputPath) => {
+        // 1. iterate over inputPath
+        let localFolder = home;
+        const inputPathArr = inputPath.split("/");
+        const currentPathArr = directory.split("/");
+        currentPathArr.shift();
+        let newPathArr = [];
 
-        if (pathSteps[0]) {
-        }
+        // 2. for each ".." in the inputPath, remove from currentPath and inputPath
+        inputPathArr.forEach((path) => {
+          if (path === "..") {
+            currentPathArr.pop();
+          }
+        });
 
-        if (
-          currentFolder.hasOwnProperty(path) &&
-          currentFolder[path].type === "folder"
-        ) {
-          setDirectory(`${directory}/${path} `);
-          setCurrentFolder(currentFolder[path]);
+        // remove ".." from input array
+        const filteredInputArr = inputPathArr.filter((path) => {
+          return path !== "..";
+        });
+
+        // 3. construct new path using processed current and input path
+        newPathArr = [...currentPathArr, ...filteredInputArr];
+        console.log(newPathArr);
+
+        try {
+          for (let i = 0; i < newPathArr.length; i++) {
+            if (
+              localFolder.hasOwnProperty(newPathArr[i]) &&
+              localFolder[newPathArr[i]].type === "folder"
+            ) {
+              localFolder = localFolder[newPathArr[i]];
+            } else {
+              throw `error`;
+            }
+          }
+
+          // 3. if folder exist in currentFolder then move into this folder
+          setDirectory(["", ...newPathArr].join("/"));
+          setCurrentFolder(localFolder);
           return [];
+        } catch (error) {
+          return [
+            {
+              type: `error`,
+              content: `[ ERROR ] - cd: no such file or directory: ${inputPath}`,
+            },
+          ];
         }
-        console.log(currentFolder);
-
-        return [
-          {
-            type: "error",
-            content: `[ ERROR ] - cd: no such file or directory: ${path}`,
-          },
-        ];
       },
     },
     cat: {
