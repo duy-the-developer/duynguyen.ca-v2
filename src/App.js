@@ -36,7 +36,7 @@ const App = () => {
         return [
           {
             type: "error",
-            content: `cd: no such file or directory: ${childDirectory}`,
+            content: `[ ERROR ] - cd: no such file or directory: ${childDirectory}`,
           },
         ];
       },
@@ -75,7 +75,7 @@ const App = () => {
 
     const previousCommand = {
       type: "directory",
-      content: `${directory} % ${e.target.value}`,
+      content: `visitor@duynguyen.ca/${directory} % ${e.target.value}`,
     };
 
     resetInput(e);
