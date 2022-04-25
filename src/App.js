@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import styled from "styled-components";
+import { v4 as uuidv4 } from "uuid";
 
 import { Directory } from "./components/Directory";
 import { TerminalMessage } from "./components/TerminalMessage";
@@ -147,11 +148,7 @@ const App = () => {
         {output.map((message) => {
           const { content, type } = message;
           return (
-            <TerminalMessage
-              key={output.indexOf(message)}
-              message={content}
-              type={type}
-            />
+            <TerminalMessage key={uuidv4()} message={content} type={type} />
           );
         })}
         <div className="input-container">

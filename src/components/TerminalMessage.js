@@ -17,7 +17,8 @@ export const TerminalMessage = ({ message, type }) => {
     typeWriter();
   }, []);
 
-  if (type === "url") {
+  if (type === "paragraph") {
+    return <StyledParagraph className={`${type}`}>{message}</StyledParagraph>;
   }
 
   return <StyledMessage className={`${type}`}>{printingText}</StyledMessage>;
@@ -48,3 +49,5 @@ const StyledMessage = styled.div`
 `;
 
 const StyledUrl = styled.a``;
+
+const StyledParagraph = styled(StyledMessage)``;
