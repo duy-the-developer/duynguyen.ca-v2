@@ -67,7 +67,7 @@ const App = () => {
           return [
             {
               type: `error`,
-              content: `[ ERROR ] - cd: no such file or directory: ${inputPath}`,
+              content: `[ ERROR ] - cd: no such directory: ${inputPath}`,
             },
           ];
         }
