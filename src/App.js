@@ -6,21 +6,15 @@ import { TerminalMessage } from "./components/TerminalMessage";
 import { home } from "./utils/output";
 
 const App = () => {
-  const [directory, setDirectory] = useState("home");
+  const [directory, setDirectory] = useState("");
   const [input, setInput] = useState("");
   const [inputWidth, setInputWidth] = useState(0);
-  const [output, setOutput] = useState(home.files["welcome.txt"]);
+  const [output, setOutput] = useState(home["welcome.txt"].content);
   const [currentFolder, setCurrentFolder] = useState(home);
 
   const inputElem = useRef(null);
 
   const commands = {
-    // welcome: {
-    //   description: `Initiate the welcome sequence`,
-    //   function: () => {
-    //     return initialOutput;
-    //   },
-    // },
     help: {
       description: `List all available commands`,
     },
@@ -29,14 +23,26 @@ const App = () => {
     },
     cd: {
       description: `Change directory - Syntax: 'cd <directory path>' - Example: 'cd /blog'`,
-      function: (childDirectory) => {
-        if (currentFolder.hasOwnProperty(childDirectory)) {
-          setDirectory(`${directory}/${childDirectory} `);
+      function: (path) => {
+        const pathSteps = path.split("/");
+
+        if (pathSteps[0]) {
         }
+
+        if (
+          currentFolder.hasOwnProperty(path) &&
+          currentFolder[path].type === "folder"
+        ) {
+          setDirectory(`${directory}/${path} `);
+          setCurrentFolder(currentFolder[path]);
+          return [];
+        }
+        console.log(currentFolder);
+
         return [
           {
             type: "error",
-            content: `[ ERROR ] - cd: no such file or directory: ${childDirectory}`,
+            content: `[ ERROR ] - cd: no such file or directory: ${path}`,
           },
         ];
       },
@@ -75,7 +81,7 @@ const App = () => {
 
     const previousCommand = {
       type: "directory",
-      content: `visitor@duynguyen.ca/${directory} % ${e.target.value}`,
+      content: `visitor@duynguyen.ca${directory} % ${e.target.value}`,
     };
 
     resetInput(e);
@@ -90,13 +96,12 @@ const App = () => {
       outputMessage = [
         {
           type: `error`,
-          content: `[ ERROR ] - '${userInput}' is not a valid command, type 'help' for a list of available commands.`,
+          content: `[ ERROR ] - '${userInput}' is not a valid command. Type 'help' for a list of available commands.`,
         },
       ];
     }
 
     setOutput([...output, previousCommand, ...outputMessage]);
-    window.scrollTo(0, document.body.scrollHeight);
   };
 
   const handleInputChange = (e) => {
@@ -126,7 +131,7 @@ const App = () => {
         <div className="input-container">
           <Directory
             for="input"
-            content={`visitor@duynguyen.ca/${directory} %  `}
+            content={`visitor@duynguyen.ca${directory} %  `}
           />
           <StyledTerminalInput
             autoFocus

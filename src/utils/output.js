@@ -5,9 +5,10 @@ export const emptyLine = {
 };
 
 export const home = {
-  files: {
-    ["intro.txt"]: [],
-    ["welcome.txt"]: [
+  ["intro.txt"]: { type: `file`, content: [] },
+  ["welcome.txt"]: {
+    type: `file`,
+    content: [
       {
         type: `ascii`,
         content: `██████╗ ██╗   ██╗██╗   ██╗    ███╗   ██╗ ██████╗ ██╗   ██╗██╗   ██╗███████╗███╗   ██╗`,
@@ -60,10 +61,8 @@ Online: ${navigator.onLine}`,
       },
       emptyLine,
     ],
-    ["contact.txt"]: [],
   },
-  folders: {
-    blog: {},
-    work: {},
-  },
+  ["contact.txt"]: [{ type: `file`, content: [] }],
+  blog: { type: `folder` },
+  work: { type: `folder` },
 };
