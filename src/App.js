@@ -106,7 +106,7 @@ const App = () => {
 
   useEffect(() => {
     scrollToBottom();
-  },[]);
+  }, []);
 
   const scrollToBottom = () => {
     const terminalElem = document.getElementsByClassName("App")[0];
@@ -206,12 +206,13 @@ const StyledApp = styled.div`
   bottom: 0;
   overflow: hidden;
   display: flex;
+  flex-direction: column;
 
   scroll-behavior: smooth;
 
-  flex-direction: column;
   max-height: calc(100vh - var(--padding-page) * 2 - var(--margin-page) * 2);
   height: calc(100vh - var(--padding-page) * 2 - var(--margin-page) * 2);
+  width: 100%;
 `;
 
 const StyledTerminalInput = styled.input`
