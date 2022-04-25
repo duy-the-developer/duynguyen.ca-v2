@@ -25,15 +25,16 @@ export const TerminalMessage = ({ message, type }) => {
 
 const StyledMessage = styled.p`
   white-space: pre-wrap;
+
   &.ascii {
+    white-space: pre;
+    font-family: "Courier New", Monospace;
+    white-space: pre;
+    font-size: 125%;
+
     color: var(--color-pink-light);
     text-shadow: 0 0 5px var(--color-amber-light);
   }
-
-  /* &.message {
-    color: var(--color-green);
-    text-shadow: 0 0 5px var(--color-green);
-  } */
 
   &.error {
     color: var(--color-pink-light);

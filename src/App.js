@@ -63,7 +63,7 @@ const App = () => {
 
     const previousCommand = {
       type: "directory",
-      content: `${directory} ${userInput}`,
+      content: `${directory}${userInput}`,
     };
 
     resetInput(e);
@@ -136,8 +136,6 @@ export default App;
 
 const StyledApp = styled.div`
   overflow: hidden;
-
-  line-height: 1.5ch;
   display: flex;
   flex-direction: column;
   height: calc(100vh - var(--padding-page) * 2 - var(--margin-page) * 2);
@@ -153,7 +151,6 @@ const StyledTerminalInput = styled.input`
     }
   }
 
-  font-family: "Press Start 2P", cursive;
   border: 0px transparent;
   display: inline-block;
   animation: blinkingCursor 1s infinite steps(2);

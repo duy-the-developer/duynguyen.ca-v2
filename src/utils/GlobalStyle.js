@@ -7,8 +7,9 @@ export const GlobalStyle = createGlobalStyle`
 
 	color: var(--color-green);
     font-family: 'Press Start 2P', cursive;
-	font-size: 75%;
+	font-size: 100%;
 	text-shadow: 0 0 5px var(--color-green);
+	line-height: 1.5ch;
 
 	--padding-page: 0px;
 	--margin-page: 0px;
@@ -52,7 +53,7 @@ time, mark, audio, video, input {
 	padding: 0;
 	border: 0;
 	font-size: 100%;
-	font: inherit;
+	font-family: inherit;
 	vertical-align: baseline;
 	background-color: inherit;
     color: inherit;
@@ -67,7 +68,7 @@ footer, header, hgroup, menu, nav, section {
 }
 
 body {
-	line-height: 1;
+
 }
 
 ol, ul {

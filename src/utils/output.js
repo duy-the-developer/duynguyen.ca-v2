@@ -1,4 +1,4 @@
-const emptyLine = {
+export const emptyLine = {
   type: `space`,
   content: `
 `,
@@ -36,7 +36,7 @@ export const initialOutput = [
   emptyLine,
   {
     type: `message`,
-    content: `DUYNGUYEN.CA INTERACTIVE PORTFOLIO TERMINAL
+    content: `DUYNGUYEN.CA INTERACTIVE WEB TERMINAL
 `,
   },
   emptyLine,
