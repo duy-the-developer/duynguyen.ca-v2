@@ -3,39 +3,50 @@ import styled from "styled-components";
 
 import { Directory } from "./components/Directory";
 import { TerminalMessage } from "./components/TerminalMessage";
-import { initialOutput } from "./utils/output";
+import { home } from "./utils/output";
 
 const App = () => {
-  const [directory, setDirectory] = useState("visitor@duynguyen.ca % ");
+  const [directory, setDirectory] = useState("home");
   const [input, setInput] = useState("");
   const [inputWidth, setInputWidth] = useState(0);
-  const [output, setOutput] = useState(initialOutput);
+  const [output, setOutput] = useState(home.files["welcome.txt"]);
+  const [currentFolder, setCurrentFolder] = useState(home);
 
   const inputElem = useRef(null);
 
   const commands = {
-    welcome: {
-      description: `Initiate the welcome sequence`,
-      function: () => {
-        return initialOutput;
-      },
-    },
+    // welcome: {
+    //   description: `Initiate the welcome sequence`,
+    //   function: () => {
+    //     return initialOutput;
+    //   },
+    // },
     help: {
       description: `List all available commands`,
     },
-    about: {
-      description: `Information about Duy`,
+    list: {
+      description: `List all files and folders in the current directory`,
     },
-    work: {
-      description: `List of all projects`
+    cd: {
+      description: `Change directory - Syntax: 'cd <directory path>' - Example: 'cd /blog'`,
+      function: (childDirectory) => {
+        if (currentFolder.hasOwnProperty(childDirectory)) {
+          setDirectory(`${directory}/${childDirectory} `);
+        }
+        return [
+          {
+            type: "error",
+            content: `cd: no such file or directory: ${childDirectory}`,
+          },
+        ];
+      },
     },
-    contact: {
-      description: `List all contact options`,
+    cat: {
+      description: `View file content - Syntax: 'cat <file name>' - Example: 'cat intro.txt'`,
     },
     clear: {
       description: `Clear console messages`,
       function: () => {
-        console.log("clear");
         setOutput([]);
       },
     },
@@ -58,12 +69,13 @@ const App = () => {
 
   const handleSubmit = (e) => {
     const userInput = e.target.value.split(" ")[0];
+    const inputParam = e.target.value.split(" ")[1];
     const isHelp = userInput === "help";
     let outputMessage = "";
 
     const previousCommand = {
       type: "directory",
-      content: `${directory}${userInput}`,
+      content: `${directory} % ${e.target.value}`,
     };
 
     resetInput(e);
@@ -72,7 +84,7 @@ const App = () => {
       if (isHelp) {
         outputMessage = displayHelp();
       } else {
-        outputMessage = [...commands[userInput].function()];
+        outputMessage = [...commands[userInput].function(inputParam)];
       }
     } else {
       outputMessage = [
@@ -112,7 +124,10 @@ const App = () => {
           );
         })}
         <div className="input-container">
-          <Directory for="input" content={directory} />
+          <Directory
+            for="input"
+            content={`visitor@duynguyen.ca/${directory} %  `}
+          />
           <StyledTerminalInput
             autoFocus
             ref={inputElem}

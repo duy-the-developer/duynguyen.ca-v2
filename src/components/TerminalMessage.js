@@ -23,7 +23,7 @@ export const TerminalMessage = ({ message, type }) => {
   return <StyledMessage className={`${type}`}>{printingText}</StyledMessage>;
 };
 
-const StyledMessage = styled.p`
+const StyledMessage = styled.div`
   white-space: pre-wrap;
 
   &.ascii {

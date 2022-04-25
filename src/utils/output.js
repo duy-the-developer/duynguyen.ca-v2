@@ -4,59 +4,66 @@ export const emptyLine = {
 `,
 };
 
-export const initialOutput = [
-  {
-    type: `ascii`,
-    content: `██████╗ ██╗   ██╗██╗   ██╗    ███╗   ██╗ ██████╗ ██╗   ██╗██╗   ██╗███████╗███╗   ██╗`,
-  },
-  {
-    type: `ascii`,
-    content: `██╔══██╗██║   ██║╚██╗ ██╔╝    ████╗  ██║██╔════╝ ██║   ██║╚██╗ ██╔╝██╔════╝████╗  ██║`,
-  },
-  {
-    type: `ascii`,
-    content: `██║  ██║██║   ██║ ╚████╔╝     ██╔██╗ ██║██║  ███╗██║   ██║ ╚████╔╝ █████╗  ██╔██╗ ██║`,
-  },
-  {
-    type: `ascii`,
-    content: `██║  ██║██║   ██║  ╚██╔╝      ██║╚██╗██║██║   ██║██║   ██║  ╚██╔╝  ██╔══╝  ██║╚██╗██║`,
-  },
-  {
-    type: `ascii`,
-    content: `██████╔╝╚██████╔╝   ██║       ██║ ╚████║╚██████╔╝╚██████╔╝   ██║   ███████╗██║ ╚████║`,
-  },
-  {
-    type: `ascii`,
-    content: `╚═════╝  ╚═════╝    ╚═╝       ╚═╝  ╚═══╝ ╚═════╝  ╚═════╝    ╚═╝   ╚══════╝╚═╝  ╚═══╝`,
-  },
-  {
-    type: `ascii`,
-    content: `*************************************************************************************`,
-  },
-  emptyLine,
-  {
-    type: `message`,
-    content: `DUYNGUYEN.CA INTERACTIVE WEB TERMINAL
-`,
-  },
-  emptyLine,
-  {
-    type: `message`,
-    content: `Local Time: ${new Date()}
-Browser: ${navigator.appName}
+export const home = {
+  files: {
+    ["intro.txt"]: [],
+    ["welcome.txt"]: [
+      {
+        type: `ascii`,
+        content: `██████╗ ██╗   ██╗██╗   ██╗    ███╗   ██╗ ██████╗ ██╗   ██╗██╗   ██╗███████╗███╗   ██╗`,
+      },
+      {
+        type: `ascii`,
+        content: `██╔══██╗██║   ██║╚██╗ ██╔╝    ████╗  ██║██╔════╝ ██║   ██║╚██╗ ██╔╝██╔════╝████╗  ██║`,
+      },
+      {
+        type: `ascii`,
+        content: `██║  ██║██║   ██║ ╚████╔╝     ██╔██╗ ██║██║  ███╗██║   ██║ ╚████╔╝ █████╗  ██╔██╗ ██║`,
+      },
+      {
+        type: `ascii`,
+        content: `██║  ██║██║   ██║  ╚██╔╝      ██║╚██╗██║██║   ██║██║   ██║  ╚██╔╝  ██╔══╝  ██║╚██╗██║`,
+      },
+      {
+        type: `ascii`,
+        content: `██████╔╝╚██████╔╝   ██║       ██║ ╚████║╚██████╔╝╚██████╔╝   ██║   ███████╗██║ ╚████║`,
+      },
+      {
+        type: `ascii`,
+        content: `╚═════╝  ╚═════╝    ╚═╝       ╚═╝  ╚═══╝ ╚═════╝  ╚═════╝    ╚═╝   ╚══════╝╚═╝  ╚═══╝`,
+      },
+      {
+        type: `ascii`,
+        content: `*************************************************************************************`,
+      },
+      emptyLine,
+      {
+        type: `message`,
+        content: `DUYNGUYEN.CA INTERACTIVE PORTFOLIO TERMINAL`,
+      },
+      emptyLine,
+      {
+        type: `message`,
+        content: `Local Time: ${new Date()}
 Engine: ${navigator.product}
-User Agent: ${navigator.userAgent}
+Browser: ${navigator.appName}`,
+      },
+      {
+        type: `message`,
+        content: `User Agent: ${navigator.userAgent}
 Online: ${navigator.onLine}`,
+      },
+      emptyLine,
+      {
+        type: `message`,
+        content: `Type 'help' for a list of all available commands.`,
+      },
+      emptyLine,
+    ],
+    ["contact.txt"]: [],
   },
-  emptyLine,
-  {
-    type: `message`,
-    content: `Type 'help' for a list of all available commands.`,
+  folders: {
+    blog: {},
+    work: {},
   },
-  emptyLine,
-  {
-    type: `message`,
-    content: `My name is Duy Nguyen and I am a Full Stack Developer. Welcome to my terminal-themed interactive portfolio.`,
-  },
-  emptyLine,
-];
+};
