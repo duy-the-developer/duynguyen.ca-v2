@@ -2,7 +2,18 @@ import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
 :root {
-    background-color: var(--color-gray-dark);
+	@keyframes scanline {
+    0% {
+      background-position: 200% 200% 
+    }
+    100% {
+      background-position: 0% 0%
+    }
+  }
+
+  	background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 54%, rgba(45,45,45,1) 55%, rgba(0,0,0,1) 65%, rgba(0,0,0,1) 100%);
+	background-size: 100% 200%; 
+	animation: scanline 10s linear infinite;
 	height: calc(100vh - var(--padding-page)*2 - var(--margin-page)*2);
 
 	color: var(--color-green);

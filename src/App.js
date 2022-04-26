@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Directory } from "./components/Directory";
 import { TerminalMessage } from "./components/TerminalMessage";
 import { siteMap } from "./utils/output";
+import { scrollToBottom } from "./utils/scroll-to-bottom";
 
 const App = () => {
   const [directory, setDirectory] = useState("");
@@ -35,8 +36,8 @@ const App = () => {
       description: `Change directory - Syntax: 'cd <directory path>' - Example: 'cd /blog'`,
       function: (inputPath) => {
         if (inputPath === "") {
-          setCurrentFolder(siteMap);
           setDirectory("");
+          setCurrentFolder(siteMap);
           return [];
         }
 
@@ -89,7 +90,7 @@ const App = () => {
       },
     },
     cat: {
-      description: `View file content - Syntax: 'cat <file name>' - Example: 'cat intro.txt'`,
+      description: `View file content - Syntax: 'cat <file name>' - Example: 'cat README.txt'`,
       function: (fileName) => {
         if (
           currentFolder.hasOwnProperty(fileName) &&
@@ -112,12 +113,6 @@ const App = () => {
         setOutput([]);
       },
     },
-  };
-
-  const scrollToBottom = () => {
-    const terminalElem = document.getElementsByClassName("App")[0];
-    terminalElem.scrollTop = terminalElem.scrollHeight;
-    setTimeout(scrollToBottom, 500);
   };
 
   const resetInput = (e) => {
