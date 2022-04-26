@@ -9,7 +9,7 @@ export const TerminalMessage = ({ message, type }) => {
     if (i < message.length) {
       setPrintingText(message.substring(0, i + 1));
       i++;
-      setTimeout(typeWriter, 15);
+      setTimeout(typeWriter, 10);
     } else {
       clearTimeout(typeWriter);
     }
@@ -28,6 +28,15 @@ export const TerminalMessage = ({ message, type }) => {
 
 const StyledMessage = styled.div`
   white-space: pre-wrap;
+
+  &.heading {
+    background-color: var(--color-amber-light);
+    color: var(--color-gray-dark);
+    text-shadow: 0 0 5px var(--color-gray-dark);
+    display: inline-block;
+    width: fit-content;
+    box-shadow: 0 0 5px var(--color-amber-light);
+  }
 
   &.ascii {
     white-space: pre;

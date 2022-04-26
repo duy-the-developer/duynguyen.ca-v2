@@ -14,6 +14,10 @@ const App = () => {
 
   const inputElem = useRef(null);
 
+  useEffect(() => {
+    scrollToBottom();
+  }, []);
+
   const commands = {
     list: {
       description: `List all files and folders in the current directory`,
@@ -30,6 +34,12 @@ const App = () => {
     cd: {
       description: `Change directory - Syntax: 'cd <directory path>' - Example: 'cd /blog'`,
       function: (inputPath) => {
+        if (inputPath === "") {
+          setCurrentFolder(siteMap);
+          setDirectory("");
+          return [];
+        }
+
         // 1. iterate over inputPath
         let localFolder = siteMap;
         const inputPathArr = inputPath.split("/");
@@ -103,10 +113,6 @@ const App = () => {
       },
     },
   };
-
-  useEffect(() => {
-    scrollToBottom();
-  }, []);
 
   const scrollToBottom = () => {
     const terminalElem = document.getElementsByClassName("App")[0];
