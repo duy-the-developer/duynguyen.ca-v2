@@ -10,7 +10,7 @@ export const lineBreak = {
 };
 
 export const siteMap = {
-  ["READ_ME.txt"]: {
+  ["README.txt"]: {
     type: `file`,
     content: [
       {
@@ -39,11 +39,7 @@ export const siteMap = {
       },
       lineBreak,
       emptyLine,
-      {
-        type: `message`,
-        content: `Hello world! My name is Duy and I am a Full Stack Developer. Welcome to my interactive web portfolio terminal, built entirely from scratch using HTML, CSS, Javascript and React with minimal dependencies. The portfolio is heavily inspired by old school, late 80s, early 90s computer terminals with a Cyperpunk aesthetic. It mimics the basic functionality of a UNIX terminal, featuring common commands like 'list', 'cd', 'cat' and 'clear' to navigate the site.`,
-      },
-      emptyLine,
+
       {
         type: `heading`,
         content: `CHANGE DIRECTORY`,
@@ -75,12 +71,12 @@ export const siteMap = {
       },
       {
         type: `message`,
-        content: `cat <file name>: open file - ex: 'cat welcome.txt'`,
+        content: `cat <file name> - Example: 'cat welcome.txt'`,
       },
       emptyLine,
       {
         type: `heading`,
-        content: `OTHERS`,
+        content: `OTHER COMMANDS`,
       },
       {
         type: `message`,
@@ -89,6 +85,14 @@ help: List all available commands
 clear: Clear console messages`,
       },
       emptyLine,
+      {
+        type: `heading`,
+        content: `ABOUT DUYNGUYEN.CA`,
+      },
+      {
+        type: `message`,
+        content: `duynguyen.ca is an interactive web portfolio terminal, built entirely from scratch using HTML, CSS, Javascript and React with minimal dependencies. The portfolio is heavily inspired by old school, late 80s, early 90s computer terminals with a Cyperpunk aesthetic. It mimics the basic functionality of a UNIX terminal, featuring common commands like 'list', 'cd', 'cat' and 'clear' to navigate the site.`,
+      },
     ],
   },
   ["welcome.txt"]: {
@@ -139,40 +143,50 @@ Online: ${navigator.onLine}`,
       emptyLine,
       {
         type: `heading`,
-        content: `Type 'help' for a list of all available commands. Type 'cat READ_ME.txt' if you are lost.`,
+        content: `Type 'help' for a list of all available commands. Type 'cat README.txt' if you are lost.`,
       },
       emptyLine,
     ],
   },
-  ["contact.txt"]: {
+  ["about.txt"]: {
     type: `file`,
     content: [
       {
         type: "ascii",
-        content: ` ██████╗ ██████╗ ███╗   ██╗████████╗ █████╗  ██████╗████████╗`,
+        content: ` █████╗ ██████╗  ██████╗ ██╗   ██╗████████╗`,
       },
       {
         type: "ascii",
-        content: `██╔════╝██╔═══██╗████╗  ██║╚══██╔══╝██╔══██╗██╔════╝╚══██╔══╝`,
+        content: `██╔══██╗██╔══██╗██╔═══██╗██║   ██║╚══██╔══╝`,
       },
       {
         type: "ascii",
-        content: `██║     ██║   ██║██╔██╗ ██║   ██║   ███████║██║        ██║`,
+        content: `███████║██████╔╝██║   ██║██║   ██║   ██║   `,
       },
       {
         type: "ascii",
-        content: `██║     ██║   ██║██║╚██╗██║   ██║   ██╔══██║██║        ██║`,
+        content: `██╔══██║██╔══██╗██║   ██║██║   ██║   ██║   `,
       },
       {
         type: "ascii",
-        content: `╚██████╗╚██████╔╝██║ ╚████║   ██║   ██║  ██║╚██████╗   ██║`,
+        content: `██║  ██║██████╔╝╚██████╔╝╚██████╔╝   ██║   `,
       },
       {
         type: "ascii",
-        content: ` ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝   ╚═╝`,
+        content: `╚═╝  ╚═╝╚═════╝  ╚═════╝  ╚═════╝    ╚═╝   `,
       },
       lineBreak,
       emptyLine,
+      {
+        type: "message",
+        content: `Hello world! My name is Duy Nguyen, I am a Full Stack Developer from Montreal, Canada. I was an accountant in my previous life and had a career change after I obtained my Diploma in Web Development from Concordia University in November, 2021. 
+        
+Since then, I've been working full time as a developer at Fulhaus Inc., as well as getting involved in other web development projects in both professional and personal settings. Within that time, I have studied my way around React, NodeJS, Express, MongoDB and directly worked in integration projects involving platforms like Quickbooks Online, Stripe, Salesforce, Airtable, to name a few.
+
+Outside of work, I enjoy teaching, tutoring other web development students. If I am not in front of my screen working, tutoring or gaming, you will most likely find me fighting for my life in the gym.
+
+It would be my pleasure to collaborate with you on your projects. Type 'cat contact.txt' in the terminal from the root directory (the current one if you are reading this) for a list of contact options.`,
+      },
     ],
   },
   blog: {
