@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import styled from "styled-components";
 
 import { Directory } from "./components/Directory";
@@ -12,12 +12,15 @@ const App = () => {
   const [inputWidth, setInputWidth] = useState(0);
   const [output, setOutput] = useState(siteMap["welcome.txt"].content);
   const [currentFolder, setCurrentFolder] = useState(siteMap);
-
-  const inputElem = useRef(null);
+  const [scrollHeight, setScrollHeight] = useState();
+  const [isPrinting, setIsPrinting] = useState(true);
 
   useEffect(() => {
+    setScrollHeight(document.getElementById("App").scrollHeight);
     scrollToBottom();
-  }, []);
+  }, [scrollHeight, isPrinting]);
+
+  const inputElem = useRef(null);
 
   const commands = {
     list: {
@@ -168,6 +171,7 @@ const App = () => {
 
   return (
     <StyledApp
+      id={"App"}
       className="App"
       onClick={() => {
         inputElem.current.focus();
@@ -175,27 +179,38 @@ const App = () => {
     >
       {output.map((message, i) => {
         const { content, type } = message;
-        return <TerminalMessage key={i} message={content} type={type} />;
+        return (
+          <TerminalMessage
+            key={i}
+            message={content}
+            type={type}
+            isLast={i === output.length - 1}
+            setScrollHeight={setScrollHeight}
+            setIsPrinting={setIsPrinting}
+          />
+        );
       })}
-      <div className="input-container">
-        <Directory
-          for="input"
-          content={`visitor@duynguyen.ca${directory} %  `}
-        />
-        <StyledTerminalInput
-          autoFocus
-          ref={inputElem}
-          type="text"
-          value={input}
-          onChange={handleInputChange}
-          onKeyPress={(e) => {
-            if (e.key === "Enter") {
-              handleSubmit(e);
-            }
-          }}
-          style={{ width: inputWidth }}
-        />
-      </div>
+      {!isPrinting ? (
+        <div className="input-container">
+          <Directory
+            for="input"
+            content={`visitor@duynguyen.ca${directory} %  `}
+          />
+          <StyledTerminalInput
+            autoFocus
+            ref={inputElem}
+            type="text"
+            value={input}
+            onChange={handleInputChange}
+            onKeyPress={(e) => {
+              if (e.key === "Enter") {
+                handleSubmit(e);
+              }
+            }}
+            style={{ width: inputWidth }}
+          />
+        </div>
+      ) : null}
     </StyledApp>
   );
 };
@@ -205,11 +220,19 @@ export default App;
 const StyledApp = styled.div`
   position: absolute;
   bottom: 0;
-  overflow: hidden;
+  overflow: auto;
   display: flex;
   flex-direction: column;
 
   scroll-behavior: smooth;
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 
   max-height: calc(100vh - var(--padding-page) * 2 - var(--margin-page) * 2);
   height: calc(100vh - var(--padding-page) * 2 - var(--margin-page) * 2);

@@ -1,7 +1,13 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 
-export const TerminalMessage = ({ message, type }) => {
+export const TerminalMessage = ({
+  message,
+  type,
+  isLast,
+  setScrollHeight,
+  setIsPrinting,
+}) => {
   const [printingText, setPrintingText] = useState("");
 
   let i = 0;
@@ -10,18 +16,23 @@ export const TerminalMessage = ({ message, type }) => {
       setPrintingText(message.substring(0, i + 1));
       i++;
       setTimeout(typeWriter, 10);
+      if (isLast) {
+        setScrollHeight(document.getElementById("App").scrollHeight);
+      }
     } else {
-      clearTimeout(typeWriter);
+      setScrollHeight(document.getElementById("App").scrollHeight);
+      if (isLast) {
+        setIsPrinting(false);
+      }
     }
   };
 
   useEffect(() => {
     typeWriter();
+    if (isLast) {
+      setIsPrinting(true);
+    }
   }, []);
-
-  if (type === "paragraph") {
-    return <StyledParagraph className={`${type}`}>{message}</StyledParagraph>;
-  }
 
   return <StyledMessage className={`${type}`}>{printingText}</StyledMessage>;
 };
