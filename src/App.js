@@ -137,7 +137,7 @@ const App = () => {
     const inputArr = e.target.value.split(" ");
     const command = inputArr.shift();
     const inputParam = inputArr.join("");
-    const isHelp = command === "help";
+    // const isHelp = command === "help";
     let outputMessage = "";
 
     const previousCommand = {
@@ -147,17 +147,40 @@ const App = () => {
 
     resetInput(e);
 
-    if (isHelp) {
-      outputMessage = displayHelp();
-    } else if (commands.hasOwnProperty(command)) {
-      outputMessage = [...commands[command].function(inputParam)];
-    } else {
-      outputMessage = [
-        {
-          type: `error`,
-          content: `[ ERROR ] - '${command}' is not a valid command. Type 'help' for a list of available commands.`,
-        },
-      ];
+    // if (isHelp) {
+    //   outputMessage = displayHelp();
+    // } else if (commands.hasOwnProperty(command)) {
+    //   outputMessage = [...commands[command].function(inputParam)];
+    // } else {
+    //   outputMessage = [
+    //     {
+    //       type: `error`,
+    //       content: `[ ERROR ] - '${command}' is not a valid command. Type 'help' for a list of available commands.`,
+    //     },
+    //   ];
+    // }
+
+    switch (command) {
+      case "help": {
+        outputMessage = displayHelp();
+        break;
+      }
+      case "ls": {
+        outputMessage = [...commands.list.function(inputParam)];
+        break;
+      }
+      default: {
+        if (commands.hasOwnProperty(command)) {
+          outputMessage = [...commands[command].function(inputParam)];
+        } else {
+          outputMessage = [
+            {
+              type: `error`,
+              content: `[ ERROR ] - '${command}' is not a valid command. Type 'help' for a list of available commands.`,
+            },
+          ];
+        }
+      }
     }
 
     setOutput([...output, previousCommand, ...outputMessage]);

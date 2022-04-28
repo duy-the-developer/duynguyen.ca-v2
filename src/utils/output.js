@@ -145,7 +145,6 @@ Online: ${navigator.onLine}`,
         type: `heading`,
         content: `Type 'help' for a list of all available commands. Type 'cat README.txt' if you are lost.`,
       },
-      emptyLine,
     ],
   },
   ["about.txt"]: {
