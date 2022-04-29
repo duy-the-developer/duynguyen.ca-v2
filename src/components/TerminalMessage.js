@@ -41,12 +41,12 @@ const StyledMessage = styled.div`
   white-space: pre-wrap;
 
   &.heading {
-    background-color: var(--color-amber-dark);
+    background-color: var(--color-blue-light);
     color: var(--color-gray-dark);
     text-shadow: 0 0 5px var(--color-gray-dark);
     display: inline-block;
     width: fit-content;
-    box-shadow: 0 0 5px var(--color-amber-dark);
+    box-shadow: 0 0 5px var(--color-blue-light);
   }
 
   &.ascii {
