@@ -40,12 +40,28 @@ export const siteMap = {
       lineBreak,
       emptyLine,
       {
+        type: `head1`,
+        content: `ABOUT DUYNGUYEN.CA`,
+      },
+      {
         type: `message`,
         content: `duynguyen.ca is an interactive web portfolio terminal, built entirely from scratch using HTML, CSS, Javascript and React with minimal dependencies. The portfolio is heavily inspired by old school, late 80s, early 90s computer terminals with a Cyperpunk aesthetic. It mimics the basic functionality of a UNIX terminal, featuring common commands like 'list', 'cd', 'cat' and 'clear' to navigate the site.`,
       },
       emptyLine,
       {
-        type: `heading`,
+        type: `head1`,
+        content: `NAVIGATION`,
+      },
+      {
+        type: `head2`,
+        content: `LIST ALL FILES AND FOLDERS`,
+      },
+      {
+        type: `message`,
+        content: `list - Example: 'list' or 'ls' - This will list all files and folders in the current directory`,
+      },
+      {
+        type: `head2`,
         content: `CHANGE DIRECTORY`,
       },
       {
@@ -53,7 +69,7 @@ export const siteMap = {
         content: `cd <directory path> - Example: 'cd work'`,
       },
       {
-        type: `heading`,
+        type: `head2`,
         content: `MOVE UP ONE LEVEL`,
       },
       {
@@ -61,7 +77,7 @@ export const siteMap = {
         content: `cd .. - Example: 'cd ..' - This will take you from duynguyen.ca/work -> duynguyen.ca`,
       },
       {
-        type: `heading`,
+        type: `head2`,
         content: `MOVE TO ROOT (HOME)`,
       },
       {
@@ -70,7 +86,11 @@ export const siteMap = {
       },
       emptyLine,
       {
-        type: `heading`,
+        type: `head1`,
+        content: `FILE OPERATIONS`,
+      },
+      {
+        type: `head2`,
         content: `OPEN FILES`,
       },
       {
@@ -79,14 +99,24 @@ export const siteMap = {
       },
       emptyLine,
       {
-        type: `heading`,
+        type: `head1`,
         content: `OTHER COMMANDS`,
       },
       {
+        type: `head2`,
+        content: `HELP`,
+      },
+      {
         type: `message`,
-        content: `list: List all files and folders in the current directory
-help: List all available commands
-clear: Clear console messages`,
+        content: `help - List all available commands`,
+      },
+      {
+        type: `head2`,
+        content: `CLEAR CONSOLE`,
+      },
+      {
+        type: `message`,
+        content: `clear - Clear all console messages`,
       },
     ],
   },

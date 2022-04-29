@@ -40,13 +40,20 @@ export const TerminalMessage = ({
 const StyledMessage = styled.div`
   white-space: pre-wrap;
 
-  &.heading {
+  &.head1 {
     background-color: var(--color-amber-dark);
     color: var(--color-gray-dark);
     text-shadow: 0 0 5px var(--color-gray-dark);
     display: inline-block;
     width: fit-content;
     box-shadow: 0 0 5px var(--color-amber-dark);
+  }
+
+  &.head2 {
+    color: var(--color-pink-light);
+    text-shadow: 0 0 5px var(--color-pink-light);
+    display: inline-block;
+    width: fit-content;
   }
 
   &.warning {

@@ -26,6 +26,9 @@ const App = () => {
   }, [scrollHeight, isPrinting]);
 
   const commands = {
+    help: {
+      description: `list all available commands`,
+    },
     list: {
       description: `List all files and folders in the current directory`,
       function: () => {
