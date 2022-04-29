@@ -49,6 +49,15 @@ const StyledMessage = styled.div`
     box-shadow: 0 0 5px var(--color-blue-light);
   }
 
+  &.warning {
+    background-color: var(--color-amber-light);
+    color: var(--color-gray-dark);
+    text-shadow: 0 0 5px var(--color-gray-dark);
+    display: inline-block;
+    /* width: fit-content; */
+    box-shadow: 0 0 5px var(--color-amber-light);
+  }
+
   &.ascii {
     white-space: pre;
     font-family: "Courier New", Monospace;
@@ -60,8 +69,12 @@ const StyledMessage = styled.div`
   }
 
   &.error {
-    color: var(--color-pink-light);
-    text-shadow: 0 0 5px var(--color-pink-light);
+    /* background-color: var(--color-amber-light); */
+    color: var(--color-amber-light);
+    text-shadow: 0 0 5px var(--color-amber-light);
+    display: inline-block;
+    /* width: fit-content; */
+    /* box-shadow: 0 0 5px var(--color-amber-light); */
   }
 
   &.directory {
