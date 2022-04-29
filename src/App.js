@@ -1,4 +1,5 @@
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 
 import { Directory } from "./components/Directory";
@@ -15,12 +16,14 @@ const App = () => {
   const [scrollHeight, setScrollHeight] = useState();
   const [isPrinting, setIsPrinting] = useState(true);
 
+  const inputElem = useRef(null);
+
+  let history = useHistory();
+
   useEffect(() => {
     setScrollHeight(document.getElementById("App").scrollHeight);
     scrollToBottom();
   }, [scrollHeight, isPrinting]);
-
-  const inputElem = useRef(null);
 
   const commands = {
     list: {
@@ -41,6 +44,7 @@ const App = () => {
         if (inputPath === "") {
           setDirectory("");
           setCurrentFolder(siteMap);
+          history.push("/");
           return [];
         }
 
@@ -81,8 +85,11 @@ const App = () => {
           // 3. if folder exist in currentFolder then move into this folder
           setDirectory(["", ...newPathArr].join("/"));
           setCurrentFolder(localFolder);
+          console.log(`/${[...newPathArr].join("/")}`);
+          history.push(`/${[...newPathArr].join("/")}`);
           return [];
         } catch (error) {
+          // console.log(error);
           return [
             {
               type: `error`,
@@ -137,7 +144,6 @@ const App = () => {
     const inputArr = e.target.value.split(" ");
     const command = inputArr.shift();
     const inputParam = inputArr.join("");
-    // const isHelp = command === "help";
     let outputMessage = "";
 
     const previousCommand = {
@@ -146,19 +152,6 @@ const App = () => {
     };
 
     resetInput(e);
-
-    // if (isHelp) {
-    //   outputMessage = displayHelp();
-    // } else if (commands.hasOwnProperty(command)) {
-    //   outputMessage = [...commands[command].function(inputParam)];
-    // } else {
-    //   outputMessage = [
-    //     {
-    //       type: `error`,
-    //       content: `[ ERROR ] - '${command}' is not a valid command. Type 'help' for a list of available commands.`,
-    //     },
-    //   ];
-    // }
 
     switch (command) {
       case "help": {
