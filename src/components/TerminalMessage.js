@@ -50,12 +50,12 @@ const StyledMessage = styled.div`
   }
 
   &.warning {
-    background-color: var(--color-amber-light);
+    background-color: var(--color-amber-dark);
     color: var(--color-gray-dark);
     text-shadow: 0 0 5px var(--color-gray-dark);
     display: inline-block;
     /* width: fit-content; */
-    box-shadow: 0 0 5px var(--color-amber-light);
+    box-shadow: 0 0 5px var(--color-amber-dark);
   }
 
   &.ascii {
