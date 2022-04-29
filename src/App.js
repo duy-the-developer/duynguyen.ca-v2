@@ -83,10 +83,9 @@ const App = () => {
           }
 
           // 3. if folder exist in currentFolder then move into this folder
-          setDirectory(["", ...newPathArr].join("/"));
-          setCurrentFolder(localFolder);
-          console.log(`/${[...newPathArr].join("/")}`);
           history.push(`/${[...newPathArr].join("/")}`);
+          setDirectory(window.location.pathname);
+          setCurrentFolder(localFolder);
           return [];
         } catch (error) {
           // console.log(error);
