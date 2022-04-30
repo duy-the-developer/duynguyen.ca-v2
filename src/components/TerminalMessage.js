@@ -34,6 +34,18 @@ export const TerminalMessage = ({
     }
   }, []);
 
+  if (type === "url" || type === "mail") {
+    return (
+      <StyledUrl
+        href={type === "mail" ? `mailto: ${message}` : message}
+        target={"_blank"}
+        className={`${type}`}
+      >
+        {printingText}
+      </StyledUrl>
+    );
+  }
+
   return <StyledMessage className={`${type}`}>{printingText}</StyledMessage>;
 };
 
@@ -68,9 +80,7 @@ const StyledMessage = styled.div`
   &.ascii {
     white-space: pre;
     font-family: "Courier New", Monospace;
-    white-space: pre;
     font-size: 125%;
-
     color: var(--color-pink-light);
     text-shadow: 0 0 5px var(--color-pink-light);
   }
@@ -86,6 +96,8 @@ const StyledMessage = styled.div`
   }
 `;
 
-const StyledUrl = styled.a``;
+const StyledUrl = styled.a`
+  width: fit-content;
+`;
 
 const StyledParagraph = styled(StyledMessage)``;

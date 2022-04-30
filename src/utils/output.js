@@ -50,7 +50,7 @@ export const siteMap = {
       emptyLine,
       {
         type: `head1`,
-        content: `NAVIGATION`,
+        content: `COMMANDS`,
       },
       {
         type: `head2`,
@@ -86,10 +86,6 @@ export const siteMap = {
       },
       emptyLine,
       {
-        type: `head1`,
-        content: `FILE OPERATIONS`,
-      },
-      {
         type: `head2`,
         content: `OPEN FILES`,
       },
@@ -98,10 +94,6 @@ export const siteMap = {
         content: `cat <file name> - Example: 'cat welcome.txt'`,
       },
       emptyLine,
-      {
-        type: `head1`,
-        content: `OTHER COMMANDS`,
-      },
       {
         type: `head2`,
         content: `HELP`,
@@ -117,6 +109,42 @@ export const siteMap = {
       {
         type: `message`,
         content: `clear - Clear all console messages`,
+      },
+      emptyLine,
+      { type: `head1`, content: `DOCUMENTATION` },
+      {
+        type: `head2`,
+        content: `Github`,
+      },
+      {
+        type: `url`,
+        content: `https://github.com/duy-devsense/duynguyen.ca`,
+      },
+      emptyLine,
+      { type: `head1`, content: `CONTACT` },
+      {
+        type: `head2`,
+        content: `Github`,
+      },
+      {
+        type: `url`,
+        content: `https://github.com/duy-devsense`,
+      },
+      {
+        type: `head2`,
+        content: `LinkedIn`,
+      },
+      {
+        type: `url`,
+        content: `https://www.linkedin.com/in/ngoc-duy-anh-nguyen/`,
+      },
+      {
+        type: `head2`,
+        content: `Email`,
+      },
+      {
+        type: `mail`,
+        content: `duy.nguyen@devsense.ca`,
       },
     ],
   },
@@ -210,6 +238,61 @@ Since then, I've been working full time as a developer at Fulhaus Inc., as well 
 Outside of work, I enjoy teaching, tutoring other web development students. If I am not in front of my screen working, tutoring or gaming, you will most likely find me fighting for my life in the gym.
 
 It would be my pleasure to collaborate with you on your projects. Type 'cat contact.txt' in the terminal from the root directory (the current one if you are reading this) for a list of contact options.`,
+      },
+    ],
+  },
+  ["contact.txt"]: {
+    type: `file`,
+    content: [
+      {
+        type: "ascii",
+        content: ` ██████╗ ██████╗ ███╗   ██╗████████╗ █████╗  ██████╗████████╗`,
+      },
+      {
+        type: "ascii",
+        content: `██╔════╝██╔═══██╗████╗  ██║╚══██╔══╝██╔══██╗██╔════╝╚══██╔══╝`,
+      },
+      {
+        type: "ascii",
+        content: `██║     ██║   ██║██╔██╗ ██║   ██║   ███████║██║        ██║   `,
+      },
+      {
+        type: "ascii",
+        content: `██║     ██║   ██║██║╚██╗██║   ██║   ██╔══██║██║        ██║   `,
+      },
+      {
+        type: "ascii",
+        content: `╚██████╗╚██████╔╝██║ ╚████║   ██║   ██║  ██║╚██████╗   ██║   `,
+      },
+      {
+        type: "ascii",
+        content: ` ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝   ╚═╝   `,
+      },
+      lineBreak,
+      emptyLine,
+      {
+        type: `head2`,
+        content: `Github`,
+      },
+      {
+        type: `url`,
+        content: `https://github.com/duy-devsense`,
+      },
+      {
+        type: `head2`,
+        content: `LinkedIn`,
+      },
+      {
+        type: `url`,
+        content: `https://www.linkedin.com/in/ngoc-duy-anh-nguyen/`,
+      },
+      {
+        type: `head2`,
+        content: `Email`,
+      },
+      {
+        type: `mail`,
+        content: `duy.nguyen@devsense.ca`,
       },
     ],
   },
