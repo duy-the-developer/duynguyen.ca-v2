@@ -41,15 +41,6 @@ export const siteMap = {
       emptyLine,
       {
         type: `head1`,
-        content: `ABOUT DUYNGUYEN.CA`,
-      },
-      {
-        type: `message`,
-        content: `duynguyen.ca is an interactive web portfolio terminal, built entirely from scratch using HTML, CSS, Javascript and React with minimal dependencies. The portfolio is heavily inspired by old school, late 80s, early 90s computer terminals with a Cyperpunk aesthetic. It mimics the basic functionality of a UNIX terminal, featuring common commands like 'list', 'cd', 'cat' and 'clear' to navigate the site.`,
-      },
-      emptyLine,
-      {
-        type: `head1`,
         content: `COMMANDS`,
       },
       {
@@ -145,6 +136,15 @@ export const siteMap = {
       {
         type: `mail`,
         content: `duy.nguyen@devsense.ca`,
+      },
+      emptyLine,
+      {
+        type: `head1`,
+        content: `ABOUT DUYNGUYEN.CA`,
+      },
+      {
+        type: `message`,
+        content: `duynguyen.ca is an interactive web portfolio terminal, built entirely from scratch using HTML, CSS, Javascript and React with minimal dependencies. The portfolio is heavily inspired by old school, late 80s, early 90s computer terminals with a Cyperpunk aesthetic. It mimics the basic functionality of a UNIX terminal, featuring common commands like 'list', 'cd', 'cat' and 'clear' to navigate the site.`,
       },
     ],
   },
