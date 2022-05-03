@@ -101,8 +101,8 @@ const App = () => {
         }
       },
     },
-    cat: {
-      description: `View file content - Syntax: 'cat <file name>' - Example: 'cat README.txt'`,
+    open: {
+      description: `View file content - Syntax: 'open <file name>' - Example: 'open README.txt'`,
       function: (fileName) => {
         if (
           currentFolder.hasOwnProperty(fileName) &&
