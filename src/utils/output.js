@@ -22,6 +22,10 @@ const mail = (content) => {
   return { type: "mail", content: content };
 };
 
+const warning = (content) => {
+  return { type: "warning", content: content };
+};
+
 export const emptyLine = {
   type: `space`,
   content: `
@@ -90,53 +94,37 @@ export const siteMap = {
   ["welcome.txt"]: {
     type: `file`,
     content: [
-      {
-        type: `ascii`,
-        content: `██████╗ ██╗   ██╗██╗   ██╗    ███╗   ██╗ ██████╗ ██╗   ██╗██╗   ██╗███████╗███╗   ██╗`,
-      },
-      {
-        type: `ascii`,
-        content: `██╔══██╗██║   ██║╚██╗ ██╔╝    ████╗  ██║██╔════╝ ██║   ██║╚██╗ ██╔╝██╔════╝████╗  ██║`,
-      },
-      {
-        type: `ascii`,
-        content: `██║  ██║██║   ██║ ╚████╔╝     ██╔██╗ ██║██║  ███╗██║   ██║ ╚████╔╝ █████╗  ██╔██╗ ██║`,
-      },
-      {
-        type: `ascii`,
-        content: `██║  ██║██║   ██║  ╚██╔╝      ██║╚██╗██║██║   ██║██║   ██║  ╚██╔╝  ██╔══╝  ██║╚██╗██║`,
-      },
-      {
-        type: `ascii`,
-        content: `██████╔╝╚██████╔╝   ██║       ██║ ╚████║╚██████╔╝╚██████╔╝   ██║   ███████╗██║ ╚████║`,
-      },
-      {
-        type: `ascii`,
-        content: `╚═════╝  ╚═════╝    ╚═╝       ╚═╝  ╚═══╝ ╚═════╝  ╚═════╝    ╚═╝   ╚══════╝╚═╝  ╚═══╝`,
-      },
+      ascii(
+        `██████╗ ██╗   ██╗██╗   ██╗    ███╗   ██╗ ██████╗ ██╗   ██╗██╗   ██╗███████╗███╗   ██╗`
+      ),
+      ascii(
+        `██╔══██╗██║   ██║╚██╗ ██╔╝    ████╗  ██║██╔════╝ ██║   ██║╚██╗ ██╔╝██╔════╝████╗  ██║`
+      ),
+      ascii(
+        `██║  ██║██║   ██║ ╚████╔╝     ██╔██╗ ██║██║  ███╗██║   ██║ ╚████╔╝ █████╗  ██╔██╗ ██║`
+      ),
+      ascii(
+        `██║  ██║██║   ██║  ╚██╔╝      ██║╚██╗██║██║   ██║██║   ██║  ╚██╔╝  ██╔══╝  ██║╚██╗██║`
+      ),
+      ascii(
+        `██████╔╝╚██████╔╝   ██║       ██║ ╚████║╚██████╔╝╚██████╔╝   ██║   ███████╗██║ ╚████║`
+      ),
+      ascii(
+        `╚═════╝  ╚═════╝    ╚═╝       ╚═╝  ╚═══╝ ╚═════╝  ╚═════╝    ╚═╝   ╚══════╝╚═╝  ╚═══╝`
+      ),
       lineBreak,
       emptyLine,
-      {
-        type: `message`,
-        content: `DUYNGUYEN.CA INTERACTIVE PORTFOLIO TERMINAL V1.14`,
-      },
+      message(`DUYNGUYEN.CA INTERACTIVE PORTFOLIO TERMINAL V1.36`),
       emptyLine,
-      {
-        type: `message`,
-        content: `Local Time: ${new Date()}
+      message(`Local Time: ${new Date()}
 Engine: ${navigator.product}
-Browser: ${navigator.appName}`,
-      },
-      {
-        type: `message`,
-        content: `User Agent: ${navigator.userAgent}
-Online: ${navigator.onLine}`,
-      },
+Browser: ${navigator.appName}`),
+      message(`User Agent: ${navigator.userAgent}
+Online: ${navigator.onLine}`),
       emptyLine,
-      {
-        type: `warning`,
-        content: `Type 'help' for a list of all available commands. Type 'open README.txt' if you are lost.`,
-      },
+      warning(
+        `Type 'help' for a list of all available commands. Type 'open README.txt' if you are lost.`
+      ),
     ],
   },
   ["about.txt"]: {
