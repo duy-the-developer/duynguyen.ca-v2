@@ -1,3 +1,27 @@
+const ascii = (content) => {
+  return { type: "ascii", content: content };
+};
+
+const message = (content) => {
+  return { type: "message", content: content };
+};
+
+const head1 = (content) => {
+  return { type: "head1", content: content };
+};
+
+const head2 = (content) => {
+  return { type: "head2", content: content };
+};
+
+const url = (content) => {
+  return { type: "url", content: content };
+};
+
+const mail = (content) => {
+  return { type: "mail", content: content };
+};
+
 export const emptyLine = {
   type: `space`,
   content: `
@@ -13,139 +37,54 @@ export const siteMap = {
   ["README.txt"]: {
     type: `file`,
     content: [
-      {
-        type: `ascii`,
-        content: `██████╗ ███████╗ █████╗ ██████╗     ███╗   ███╗███████╗`,
-      },
-      {
-        type: `ascii`,
-        content: `██╔══██╗██╔════╝██╔══██╗██╔══██╗    ████╗ ████║██╔════╝`,
-      },
-      {
-        type: `ascii`,
-        content: `██████╔╝█████╗  ███████║██║  ██║    ██╔████╔██║█████╗`,
-      },
-      {
-        type: `ascii`,
-        content: `██╔══██╗██╔══╝  ██╔══██║██║  ██║    ██║╚██╔╝██║██╔══╝`,
-      },
-      {
-        type: `ascii`,
-        content: `██║  ██║███████╗██║  ██║██████╔╝    ██║ ╚═╝ ██║███████╗`,
-      },
-      {
-        type: `ascii`,
-        content: `╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═════╝     ╚═╝     ╚═╝╚══════╝`,
-      },
+      ascii(`██████╗ ███████╗ █████╗ ██████╗     ███╗   ███╗███████╗`),
+      ascii(`██╔══██╗██╔════╝██╔══██╗██╔══██╗    ████╗ ████║██╔════╝`),
+      ascii(`██████╔╝█████╗  ███████║██║  ██║    ██╔████╔██║█████╗`),
+      ascii(`██╔══██╗██╔══╝  ██╔══██║██║  ██║    ██║╚██╔╝██║██╔══╝`),
+      ascii(`██║  ██║███████╗██║  ██║██████╔╝    ██║ ╚═╝ ██║███████╗`),
+      ascii(`╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═════╝     ╚═╝     ╚═╝╚══════╝`),
       lineBreak,
       emptyLine,
-      {
-        type: `head1`,
-        content: `COMMANDS`,
-      },
-      {
-        type: `head2`,
-        content: `LIST ALL FILES AND FOLDERS`,
-      },
-      {
-        type: `message`,
-        content: `list - Example: 'list' or 'ls' - This will list all files and folders in the current directory`,
-      },
-      {
-        type: `head2`,
-        content: `CHANGE DIRECTORY`,
-      },
-      {
-        type: `message`,
-        content: `cd <directory path> - Example: 'cd work'`,
-      },
-      {
-        type: `head2`,
-        content: `MOVE UP ONE LEVEL`,
-      },
-      {
-        type: `message`,
-        content: `cd .. - Example: 'cd ..' - This will take you from duynguyen.ca/work -> duynguyen.ca`,
-      },
-      {
-        type: `head2`,
-        content: `MOVE TO ROOT (HOME)`,
-      },
-      {
-        type: `message`,
-        content: `cd - Example: 'cd' - This will take you to duynguyen.ca no matter where you are on the site`,
-      },
+      head1(`COMMANDS`),
+      head2(`LIST ALL FILES AND FOLDERS`),
+      message(
+        `list - Example: 'list' or 'ls' - This will list all files and folders in the current directory`
+      ),
+      head2(`CHANGE DIRECTORY`),
+      message(`cd <directory path> - Example: 'cd work'`),
+      head2(`MOVE UP ONE LEVEL`),
+      message(
+        `cd .. - Example: 'cd ..' - This will take you from duynguyen.ca/work -> duynguyen.ca`
+      ),
+      head2(`MOVE TO ROOT (HOME)`),
+      message(
+        `cd - Example: 'cd' - This will take you to duynguyen.ca no matter where you are on the site`
+      ),
       emptyLine,
-      {
-        type: `head2`,
-        content: `OPEN FILES`,
-      },
-      {
-        type: `message`,
-        content: `open <file name> - Example: 'open welcome.txt'`,
-      },
+      head2(`OPEN FILES`),
+      message(`open <file name> - Example: 'open welcome.txt'`),
       emptyLine,
-      {
-        type: `head2`,
-        content: `HELP`,
-      },
-      {
-        type: `message`,
-        content: `help - List all available commands`,
-      },
-      {
-        type: `head2`,
-        content: `CLEAR CONSOLE`,
-      },
-      {
-        type: `message`,
-        content: `clear - Clear all console messages`,
-      },
+      head2(`HELP`),
+      message(`help - List all available commands`),
+      head2(`CLEAR CONSOLE`),
+      message(`clear - Clear all console messages`),
       emptyLine,
-      { type: `head1`, content: `DOCUMENTATION` },
-      {
-        type: `head2`,
-        content: `Github`,
-      },
-      {
-        type: `url`,
-        content: `https://github.com/duy-devsense/duynguyen.ca`,
-      },
+      head1(`DOCUMENTATION`),
+      head2(`Github`),
+      url(`https://github.com/duy-devsense/duynguyen.ca`),
       emptyLine,
-      { type: `head1`, content: `CONTACT` },
-      {
-        type: `head2`,
-        content: `Github`,
-      },
-      {
-        type: `url`,
-        content: `https://github.com/duy-devsense`,
-      },
-      {
-        type: `head2`,
-        content: `LinkedIn`,
-      },
-      {
-        type: `url`,
-        content: `https://www.linkedin.com/in/ngoc-duy-anh-nguyen/`,
-      },
-      {
-        type: `head2`,
-        content: `Email`,
-      },
-      {
-        type: `mail`,
-        content: `duy.nguyen@devsense.ca`,
-      },
+      head1(`CONTACT`),
+      head2(`Github`),
+      url(`https://github.com/duy-devsense`),
+      head2(`LinkedIn`),
+      url(`https://www.linkedin.com/in/ngoc-duy-anh-nguyen/`),
+      head2(`Email`),
+      mail(`duy.nguyen@devsense.ca`),
       emptyLine,
-      {
-        type: `head1`,
-        content: `ABOUT DUYNGUYEN.CA`,
-      },
-      {
-        type: `message`,
-        content: `duynguyen.ca is an interactive web portfolio terminal, built entirely from scratch using HTML, CSS, Javascript and React with minimal dependencies. The portfolio is heavily inspired by old school, late 80s, early 90s computer terminals with a Cyperpunk aesthetic. It mimics the basic functionality of a UNIX terminal, featuring common commands like 'list', 'cd', 'open' and 'clear' to navigate the site.`,
-      },
+      head1(`ABOUT DUYNGUYEN.CA`),
+      message(
+        `duynguyen.ca is an interactive web portfolio terminal, built entirely from scratch using HTML, CSS, Javascript and React with minimal dependencies. The portfolio is heavily inspired by old school, late 80s, early 90s computer terminals with a Cyperpunk aesthetic. It mimics the basic functionality of a UNIX terminal, featuring common commands like 'list', 'cd', 'open' and 'clear' to navigate the site.`
+      ),
     ],
   },
   ["welcome.txt"]: {
@@ -229,16 +168,13 @@ Online: ${navigator.onLine}`,
       },
       lineBreak,
       emptyLine,
-      {
-        type: "message",
-        content: `Hello world! My name is Duy Nguyen, I am a Full Stack Developer from Montreal, Canada. I was an accountant in my previous life and had a career change after I obtained my Diploma in Web Development from Concordia University in November, 2021. 
+      message(`Hello world! My name is Duy Nguyen, I am a Full Stack Developer from Montreal, Canada. I was an accountant in my previous life and had a career change after I obtained my Diploma in Web Development from Concordia University in November, 2021. 
         
-Since then, I've been working full time as a developer at Fulhaus Inc., as well as getting involved in other web development projects in both professional and personal settings. Within that time, I have studied my way around React, NodeJS, Express, MongoDB and directly worked in integration projects involving platforms like Quickbooks Online, Stripe, Salesforce, Airtable, to name a few.
-
-Outside of work, I enjoy teaching, tutoring other web development students. If I am not in front of my screen working, tutoring or gaming, you will most likely find me fighting for my life in the gym.
-
-It would be my pleasure to collaborate with you on your projects. Type 'cat contact.txt' in the terminal from the root directory (the current one if you are reading this) for a list of contact options.`,
-      },
+      Since then, I've been working full time as a developer at Fulhaus Inc., as well as getting involved in other web development projects in both professional and personal settings. Within that time, I have studied my way around React, NodeJS, Express, MongoDB and directly worked in integration projects involving platforms like Quickbooks Online, Stripe, Salesforce, Airtable, to name a few.
+      
+      Outside of work, I enjoy teaching, tutoring other web development students. If I am not in front of my screen working, tutoring or gaming, you will most likely find me fighting for my life in the gym.
+      
+      It would be my pleasure to collaborate with you on your projects. Type 'cat contact.txt' in the terminal from the root directory (the current one if you are reading this) for a list of contact options.`),
     ],
   },
   ["contact.txt"]: {
@@ -303,7 +239,41 @@ It would be my pleasure to collaborate with you on your projects. Type 'cat cont
   },
   work: {
     type: `folder`,
-    tutor: { type: `folder` },
-    projects: { type: `folder` },
+    tutor: {
+      type: `folder`,
+      ["reviews.txt"]: {
+        type: `file`,
+        content: [
+          {
+            type: "ascii",
+            content: `██████╗ ███████╗██╗   ██╗██╗███████╗██╗    ██╗███████╗`,
+          },
+          {
+            type: "ascii",
+            content: `██╔══██╗██╔════╝██║   ██║██║██╔════╝██║    ██║██╔════╝`,
+          },
+          {
+            type: "ascii",
+            content: `██████╔╝█████╗  ██║   ██║██║█████╗  ██║ █╗ ██║███████╗`,
+          },
+          {
+            type: "ascii",
+            content: `██╔══██╗██╔══╝  ╚██╗ ██╔╝██║██╔══╝  ██║███╗██║╚════██║`,
+          },
+          {
+            type: "ascii",
+            content: `██║  ██║███████╗ ╚████╔╝ ██║███████╗╚███╔███╔╝███████║`,
+          },
+          {
+            type: "ascii",
+            content: `╚═╝  ╚═╝╚══════╝  ╚═══╝  ╚═╝╚══════╝ ╚══╝╚══╝ ╚══════╝`,
+          },
+          lineBreak,
+          emptyLine,
+          head1(`BRANDON R. - 2022.04.06`),
+        ],
+      },
+    },
+    ["personal-projects"]: { type: `folder` },
   },
 };
