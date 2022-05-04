@@ -130,30 +130,12 @@ Online: ${navigator.onLine}`),
   ["about.txt"]: {
     type: `file`,
     content: [
-      {
-        type: "ascii",
-        content: ` █████╗ ██████╗  ██████╗ ██╗   ██╗████████╗`,
-      },
-      {
-        type: "ascii",
-        content: `██╔══██╗██╔══██╗██╔═══██╗██║   ██║╚══██╔══╝`,
-      },
-      {
-        type: "ascii",
-        content: `███████║██████╔╝██║   ██║██║   ██║   ██║   `,
-      },
-      {
-        type: "ascii",
-        content: `██╔══██║██╔══██╗██║   ██║██║   ██║   ██║   `,
-      },
-      {
-        type: "ascii",
-        content: `██║  ██║██████╔╝╚██████╔╝╚██████╔╝   ██║   `,
-      },
-      {
-        type: "ascii",
-        content: `╚═╝  ╚═╝╚═════╝  ╚═════╝  ╚═════╝    ╚═╝   `,
-      },
+      ascii(` █████╗ ██████╗  ██████╗ ██╗   ██╗████████╗`),
+      ascii(`██╔══██╗██╔══██╗██╔═══██╗██║   ██║╚══██╔══╝`),
+      ascii(`███████║██████╔╝██║   ██║██║   ██║   ██║   `),
+      ascii(`██╔══██║██╔══██╗██║   ██║██║   ██║   ██║   `),
+      ascii(`██║  ██║██████╔╝╚██████╔╝╚██████╔╝   ██║   `),
+      ascii(`╚═╝  ╚═╝╚═════╝  ╚═════╝  ╚═════╝    ╚═╝   `),
       lineBreak,
       emptyLine,
       message(`Hello world! My name is Duy Nguyen, I am a Full Stack Developer from Montreal, Canada. I was an accountant in my previous life and had a career change after I obtained my Diploma in Web Development from Concordia University in November, 2021. 
