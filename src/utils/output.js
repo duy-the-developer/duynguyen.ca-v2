@@ -150,56 +150,20 @@ Online: ${navigator.onLine}`),
   ["contact.txt"]: {
     type: `file`,
     content: [
-      {
-        type: "ascii",
-        content: ` ██████╗ ██████╗ ███╗   ██╗████████╗ █████╗  ██████╗████████╗`,
-      },
-      {
-        type: "ascii",
-        content: `██╔════╝██╔═══██╗████╗  ██║╚══██╔══╝██╔══██╗██╔════╝╚══██╔══╝`,
-      },
-      {
-        type: "ascii",
-        content: `██║     ██║   ██║██╔██╗ ██║   ██║   ███████║██║        ██║   `,
-      },
-      {
-        type: "ascii",
-        content: `██║     ██║   ██║██║╚██╗██║   ██║   ██╔══██║██║        ██║   `,
-      },
-      {
-        type: "ascii",
-        content: `╚██████╗╚██████╔╝██║ ╚████║   ██║   ██║  ██║╚██████╗   ██║   `,
-      },
-      {
-        type: "ascii",
-        content: ` ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝   ╚═╝   `,
-      },
+      ascii(` ██████╗ ██████╗ ███╗   ██╗████████╗ █████╗  ██████╗████████╗`),
+      ascii(`██╔════╝██╔═══██╗████╗  ██║╚══██╔══╝██╔══██╗██╔════╝╚══██╔══╝`),
+      ascii(`██║     ██║   ██║██╔██╗ ██║   ██║   ███████║██║        ██║   `),
+      ascii(`██║     ██║   ██║██║╚██╗██║   ██║   ██╔══██║██║        ██║   `),
+      ascii(`╚██████╗╚██████╔╝██║ ╚████║   ██║   ██║  ██║╚██████╗   ██║   `),
+      ascii(` ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝   ╚═╝   `),
       lineBreak,
       emptyLine,
-      {
-        type: `head2`,
-        content: `Github`,
-      },
-      {
-        type: `url`,
-        content: `https://github.com/duy-devsense`,
-      },
-      {
-        type: `head2`,
-        content: `LinkedIn`,
-      },
-      {
-        type: `url`,
-        content: `https://www.linkedin.com/in/ngoc-duy-anh-nguyen/`,
-      },
-      {
-        type: `head2`,
-        content: `Email`,
-      },
-      {
-        type: `mail`,
-        content: `duy.nguyen@devsense.ca`,
-      },
+      head2(`Github`),
+      url(`https://github.com/duy-devsense`),
+      head2(`LinkedIn`),
+      url(`https://www.linkedin.com/in/ngoc-duy-anh-nguyen/`),
+      head2(`Email`),
+      mail(`duy.nguyen@devsense.ca`),
     ],
   },
   blog: {
