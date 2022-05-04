@@ -178,33 +178,17 @@ Online: ${navigator.onLine}`),
       ["reviews.txt"]: {
         type: `file`,
         content: [
-          {
-            type: "ascii",
-            content: `██████╗ ███████╗██╗   ██╗██╗███████╗██╗    ██╗███████╗`,
-          },
-          {
-            type: "ascii",
-            content: `██╔══██╗██╔════╝██║   ██║██║██╔════╝██║    ██║██╔════╝`,
-          },
-          {
-            type: "ascii",
-            content: `██████╔╝█████╗  ██║   ██║██║█████╗  ██║ █╗ ██║███████╗`,
-          },
-          {
-            type: "ascii",
-            content: `██╔══██╗██╔══╝  ╚██╗ ██╔╝██║██╔══╝  ██║███╗██║╚════██║`,
-          },
-          {
-            type: "ascii",
-            content: `██║  ██║███████╗ ╚████╔╝ ██║███████╗╚███╔███╔╝███████║`,
-          },
-          {
-            type: "ascii",
-            content: `╚═╝  ╚═╝╚══════╝  ╚═══╝  ╚═╝╚══════╝ ╚══╝╚══╝ ╚══════╝`,
-          },
+          ascii(`██████╗ ███████╗██╗   ██╗██╗███████╗██╗    ██╗███████╗`),
+          ascii(`██╔══██╗██╔════╝██║   ██║██║██╔════╝██║    ██║██╔════╝`),
+          ascii(`██████╔╝█████╗  ██║   ██║██║█████╗  ██║ █╗ ██║███████╗`),
+          ascii(`██╔══██╗██╔══╝  ╚██╗ ██╔╝██║██╔══╝  ██║███╗██║╚════██║`),
+          ascii(`██║  ██║███████╗ ╚████╔╝ ██║███████╗╚███╔███╔╝███████║`),
+          ascii(`╚═╝  ╚═╝╚══════╝  ╚═══╝  ╚═╝╚══════╝ ╚══╝╚══╝ ╚══════╝`),
           lineBreak,
           emptyLine,
           head1(`BRANDON R. - 2022.04.06`),
+          head2(`Concordia Web Development Bootcamp, Cohort: cb-wd-14b`),
+          message(`"Hey man just to let you know i managed to complete my javascript exercise tonight took me 4 hours for that section but i figured out everything and debugged everything im happy as hell. Thanks for all your help thus far."`)
         ],
       },
     },
