@@ -49,6 +49,20 @@ export const siteMap = {
       ascii(`╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═════╝     ╚═╝     ╚═╝╚══════╝`),
       lineBreak,
       emptyLine,
+      head1(`SITE MAP`),
+      message(`duynguyen.ca/
+      ├─ README.txt
+      ├─ welcome.txt
+      ├─ about.txt
+      ├─ contact.txt
+      ├─ blog/
+      │  ├─ article1.txt
+      │  ├─ article2.txt
+      ├─ work/
+         ├─ tutor/
+         │  ├─ reviews.txt
+         ├─ personal-projects/`),
+      emptyLine,
       head1(`COMMANDS`),
       head2(`LIST ALL FILES AND FOLDERS`),
       message(
@@ -186,9 +200,23 @@ Online: ${navigator.onLine}`),
           ascii(`╚═╝  ╚═╝╚══════╝  ╚═══╝  ╚═╝╚══════╝ ╚══╝╚══╝ ╚══════╝`),
           lineBreak,
           emptyLine,
+          head1(`ZEINAB R. - 2022.02.25`),
+          head2(`Concordia Web Development Bootcamp, Cohort: cb-wd-13b`),
+          message(
+            `"Hi Duy, I'm satisfied with your tutoring and I will recommend you for sure."`
+          ),
+          emptyLine,
+          head1(`KASSIM W. - 2022.03.07`),
+          head2(`Concordia Web Development Bootcamp, Cohort: cb-wd-12a`),
+          message(
+            `"Thank you for your time and attention. This has been very helpful. Look forward to connecting with you again. Take care."`
+          ),
+          emptyLine,
           head1(`BRANDON R. - 2022.04.06`),
           head2(`Concordia Web Development Bootcamp, Cohort: cb-wd-14b`),
-          message(`"Hey man just to let you know i managed to complete my javascript exercise tonight took me 4 hours for that section but i figured out everything and debugged everything im happy as hell. Thanks for all your help thus far."`)
+          message(
+            `"Hey man just to let you know i managed to complete my javascript exercise tonight took me 4 hours for that section but i figured out everything and debugged everything im happy as hell. Thanks for all your help thus far."`
+          ),
         ],
       },
     },
