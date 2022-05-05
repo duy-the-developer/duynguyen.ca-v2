@@ -150,7 +150,7 @@ Online: ${navigator.onLine}`),
       
       Outside of work, I enjoy teaching, tutoring other web development students. If I am not in front of my screen working, tutoring or gaming, you will most likely find me fighting for my life in the gym.
       
-      It would be my pleasure to collaborate with you on your projects. Type 'cat contact.txt' in the terminal from the root directory (the current one if you are reading this) for a list of contact options.`),
+      It would be my pleasure to collaborate with you on your projects. Type 'open contact.txt' in the terminal from the root directory (the current one if you are reading this) for a list of contact options.`),
     ],
   },
   ["contact.txt"]: {
