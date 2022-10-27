@@ -1,6 +1,11 @@
+import { useContext } from 'react'
+
+import { WindowsContext } from '../../contexts/windows-context'
 import DesktopItem from '../desktop-item'
 
 const Desktop = () => {
+  const { windows, setWindows, test } = useContext(WindowsContext)
+  console.log(test)
   const items = [
     {
       name: 'README.txt',
@@ -21,8 +26,8 @@ const Desktop = () => {
   ]
   return (
     <div className='flex flex-col gap-3 w-full h-full bg-bg text-fg dark:bg-dbg dark:text-dfg pt-3'>
-      {items.map((item) => {
-        return <DesktopItem item={item} />
+      {items.map((item, index) => {
+        return <DesktopItem item={item} key={`item-${index}`} />
       })}
     </div>
   )

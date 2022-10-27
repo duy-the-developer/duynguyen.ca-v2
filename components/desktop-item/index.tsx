@@ -8,7 +8,7 @@ type DesktopItem = {
 const DesktopItem = ({ item }: { item: DesktopItem }) => {
   const { name, type } = item
   return (
-    <button className='w-28 flex flex-col items-center hover:bg-red'>
+    <button className='w-28 flex flex-col items-center hover:bg-blue'>
       {type === 'file' && <MdInsertDriveFile className='h-10 w-10' />}
       {type === 'folder' && <MdFolder className='h-10 w-10' />}
       <div>{name}</div>
