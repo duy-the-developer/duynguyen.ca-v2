@@ -1,0 +1,46 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}',
+  ],
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        bg: '#fbf1c7',
+        dbg: '#282828',
+        fg: '#3c3836',
+        dfg: '#ebdbb2',
+        red: '#cc241d',
+        lred: '#fb4934',
+        dred: '#9d0006',
+        green: '#98971a',
+        lgreen: '#b8bb26',
+        dgreen: '#79740e',
+        yellow: '#d79921',
+        lyellow: '#fabd2f',
+        dyellow: '#b57614',
+        blue: '#458588',
+        lblue: '#83a598',
+        dblue: '#076678',
+        purple: '#b16286',
+        lpurple: '#d3869b',
+        dpurple: '#8f3f71',
+        aqua: '#689d6a',
+        laqua: '#8ec07c',
+        daqua: '#427b58',
+        gray: '#928374',
+        lgray: '#a89984',
+        dgray: '#7c6f64',
+        orange: '#d65d0e',
+        lorange: '#fe8019',
+        dorange: '#af3a03',
+      },
+      fontFamily: {
+        mono: ['Cousine', 'monospace'],
+      },
+    },
+  },
+  plugins: [],
+};
