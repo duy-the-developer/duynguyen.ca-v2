@@ -1,26 +1,36 @@
-import type { Dispatch, SetStateAction } from 'react'
-import { createContext, useState } from 'react'
+import { createContext, useState, useContext } from 'react'
 
 type Props = {
   children: JSX.Element
 }
 
-type defaultValue = {
-  windows: Array<Object>
-  setWindows?: Dispatch<SetStateAction<never[]>>
-  test?: String
+type TWindowsContext = {
+  windows: Object[]
+  updateWindows: (item: Object) => void
 }
 
-export const WindowsContext = createContext({
+const defaultWindowsContext: TWindowsContext = {
   windows: [],
-} as defaultValue)
+  updateWindows: () => {},
+}
+
+const WindowsContext = createContext(defaultWindowsContext)
+
+export const useWindowsContext = () => {
+  return useContext(WindowsContext)
+}
 
 export const WindowsProvider = ({ children }: Props) => {
-  const [windows, setWindows] = useState([])
-  const test = 'hello'
+  const [windows, setWindows] = useState<Object[]>([])
+  const updateWindows = (item: Object) => {
+    setWindows((state) => [...state, item])
+  }
+
   return (
-    <WindowsContext.Provider value={{ windows, setWindows, test }}>
+    <WindowsContext.Provider value={{ windows, updateWindows }}>
       {children}
     </WindowsContext.Provider>
   )
 }
+
+export default useWindowsContext

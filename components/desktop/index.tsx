@@ -1,34 +1,34 @@
-import { useContext } from 'react'
+import useWindowsContext from '../../contexts/windows-context'
+import DesktopIcon from '../desktop-icon'
 
-import { WindowsContext } from '../../contexts/windows-context'
-import DesktopItem from '../desktop-item'
+const itemsArray = [
+  {
+    name: 'README.txt',
+    type: 'file',
+  },
+  {
+    name: 'about.txt',
+    type: 'file',
+  },
+  {
+    name: 'contact.txt',
+    type: 'file',
+  },
+  {
+    name: 'projects',
+    type: 'folder',
+  },
+]
 
 const Desktop = () => {
-  const { windows, setWindows, test } = useContext(WindowsContext)
-  console.log(test)
-  const items = [
-    {
-      name: 'README.txt',
-      type: 'file',
-    },
-    {
-      name: 'about.txt',
-      type: 'file',
-    },
-    {
-      name: 'contact.txt',
-      type: 'file',
-    },
-    {
-      name: 'projects',
-      type: 'folder',
-    },
-  ]
+  const { windows, updateWindows } = useWindowsContext()
+  const thumbNails = itemsArray.map((item, index) => {
+    return <DesktopIcon item={item} key={`item-${index}`} />
+  })
+
   return (
     <div className='flex flex-col gap-3 w-full h-full bg-bg text-fg dark:bg-dbg dark:text-dfg pt-3'>
-      {items.map((item, index) => {
-        return <DesktopItem item={item} key={`item-${index}`} />
-      })}
+      {thumbNails}
     </div>
   )
 }
