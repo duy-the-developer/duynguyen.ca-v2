@@ -3,7 +3,7 @@ import Clock from './clock'
 
 const TaskBar = () => {
   return (
-    <div className='bg-dgray dark:bg-d-gray dark:text-dbg flex justify-between font-bold'>
+    <div className='select-none bg-dgray dark:bg-d-gray dark:text-dbg flex justify-between'>
       <StartButton />
       <Clock />
     </div>

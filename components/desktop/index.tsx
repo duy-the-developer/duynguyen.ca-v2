@@ -1,33 +1,54 @@
+// contexts
+import { defaultHead } from 'next/head'
 import useWindowsContext from '../../contexts/windows-context'
-import DesktopIcon from '../desktop-icon'
+
+// components
+import DesktopIcon from './desktop-icon'
+import WindowDisplay from './windows-display'
 
 const itemsArray = [
   {
     name: 'README.txt',
     type: 'file',
+    defaultW: '60vw',
+    defaultH: '80vh',
   },
   {
     name: 'about.txt',
     type: 'file',
+    defaultW: '60vw',
+    defaultH: '80vh',
   },
   {
     name: 'contact.txt',
     type: 'file',
+    defaultW: '60vw',
+    defaultH: '80vh',
   },
   {
     name: 'projects',
     type: 'folder',
+    defaultW: '60vw',
+    defaultH: '80vh',
   },
 ]
 
 const Desktop = () => {
-  const { windows, updateWindows } = useWindowsContext()
-  const thumbNails = itemsArray.map((item, index) => {
-    return <DesktopIcon item={item} key={`item-${index}`} />
+  const { windowsArr, updateWindowsArr } = useWindowsContext()
+
+  const thumbNails = itemsArray.map((element, index) => {
+    return <DesktopIcon item={element} key={`thumb-${index}`} />
+  })
+
+  const windowsDisplay = windowsArr.map((element, index) => {
+    return (
+      <WindowDisplay item={element} index={index} key={`window-${index}`} />
+    )
   })
 
   return (
-    <div className='flex flex-col gap-3 w-full h-full bg-bg text-fg dark:bg-dbg dark:text-dfg pt-3'>
+    <div className='relative flex flex-col gap-3 w-full h-full bg-bg text-fg dark:bg-dbg dark:text-dfg pt-3'>
+      {windowsDisplay}
       {thumbNails}
     </div>
   )

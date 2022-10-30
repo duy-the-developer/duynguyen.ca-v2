@@ -1,17 +1,11 @@
 import { createContext, useState, useContext } from 'react'
 
-type Props = {
-  children: JSX.Element
-}
-
-type TWindowsContext = {
-  windows: Object[]
-  updateWindows: (item: Object) => void
-}
+import { TWindowProviderProps, TWindowsContext, TItem } from '../../types/type'
 
 const defaultWindowsContext: TWindowsContext = {
-  windows: [],
-  updateWindows: () => {},
+  windowsArr: [],
+  updateWindowsArr: () => {},
+  removeWindow: () => {},
 }
 
 const WindowsContext = createContext(defaultWindowsContext)
@@ -20,14 +14,23 @@ export const useWindowsContext = () => {
   return useContext(WindowsContext)
 }
 
-export const WindowsProvider = ({ children }: Props) => {
-  const [windows, setWindows] = useState<Object[]>([])
-  const updateWindows = (item: Object) => {
-    setWindows((state) => [...state, item])
+export const WindowsProvider = ({ children }: TWindowProviderProps) => {
+  const [windowsArr, setWindowsArr] = useState<TItem[]>([])
+
+  const updateWindowsArr = (item: TItem) => {
+    if (!windowsArr.includes(item)) {
+      setWindowsArr((state) => [...state, item])
+    }
+  }
+
+  const removeWindow = (name: string, index: number) => {
+    setWindowsArr((state) => state.filter((element) => element.name !== name))
   }
 
   return (
-    <WindowsContext.Provider value={{ windows, updateWindows }}>
+    <WindowsContext.Provider
+      value={{ windowsArr, updateWindowsArr, removeWindow }}
+    >
       {children}
     </WindowsContext.Provider>
   )
