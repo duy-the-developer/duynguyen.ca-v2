@@ -8,7 +8,6 @@
     font-weight: inherit;
     background-color: inherit;
     color: inherit;
-    box-sizing: border-box;
 }
 
 @tailwind utilities;

@@ -1,33 +1,26 @@
-// modules
+// Types
 import type { MouseEvent } from 'react'
-import { useContext } from 'react'
+import { TItem } from '../../../types/type'
 
 // icons
 import { MdInsertDriveFile, MdFolder } from 'react-icons/md'
 
 // contexts
-import { useWindowsContext } from '../../contexts/windows-context'
+import { useWindowsContext } from '../../../contexts/windows-context'
 
-type Item = {
-  name: string
-  type: string
-}
-
-const DesktopIcon = ({ item }: { item: Item }) => {
-  const { windows, updateWindows } = useWindowsContext()
+const DesktopIcon = ({ item }: { item: TItem }) => {
+  const { windowsArr, updateWindowsArr } = useWindowsContext()
   const { name, type } = item
-
-  console.log(windows)
 
   const handleDoubleClick = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
-    updateWindows(item)
+    updateWindowsArr(item)
   }
 
   return (
     <button
       onDoubleClick={handleDoubleClick}
-      className='w-28 flex flex-col items-center focus:bg-blue hover:bg-aqua'
+      className='w-28 flex flex-col items-center focus:bg-lblue hover:bg-laqua cursor-default dark:focus:bg-blue dark:hover:bg-aqua'
     >
       {type === 'file' && <MdInsertDriveFile className='h-10 w-10' />}
       {type === 'folder' && <MdFolder className='h-10 w-10 text-yellow' />}
