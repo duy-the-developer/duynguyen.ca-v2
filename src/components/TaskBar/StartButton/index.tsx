@@ -1,6 +1,6 @@
-import TabArrow from '../tab-arrow'
+import TabArrow from '../../common/TabArrow'
 
-const StartButton = () => {
+export default () => {
   return (
     <div className='flex items-center'>
       <div className='flex bg-blue pr-4'>
@@ -18,5 +18,3 @@ const StartButton = () => {
     </div>
   )
 }
-
-export default StartButton

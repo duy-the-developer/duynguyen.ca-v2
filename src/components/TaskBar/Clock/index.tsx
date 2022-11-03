@@ -1,11 +1,13 @@
+'use client'
+
 // Modules
 import { useState, useEffect } from 'react'
 import { format } from 'date-fns'
 
 // Components
-import TabArrow from '../tab-arrow'
+import TabArrow from '../../common/TabArrow'
 
-const Clock = () => {
+export default () => {
   const [today, setToday] = useState<Date | null>(null)
 
   setInterval(() => {
@@ -17,18 +19,20 @@ const Clock = () => {
   }, [])
 
   return (
-    <div className='flex'>
+    <div className='flex flex-nowrap'>
       <TabArrow style='border-r-orange dark:border-r-lorange' />
-      <div className='flex bg-orange pl-4 dark:bg-lorange'>
-        {today && format(today, 'PPP')}
+      <div className='flex flex-nowrap bg-orange pl-4 dark:bg-lorange'>
+        <span className='whitespace-nowrap'>
+          {today && format(today, 'PPP')}
+        </span>
         <TabArrow style='border-r-dorange dark:border-r-orange' />
 
         <div className='px-4 bg-dorange dark:bg-orange'>
-          {today && format(today, 'pp')}
+          <span className='whitespace-nowrap'>
+            {today && format(today, 'pp')}
+          </span>
         </div>
       </div>
     </div>
   )
 }
-
-export default Clock
