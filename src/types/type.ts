@@ -5,12 +5,14 @@ export type TWindowProviderProps = {
 export type TItem = {
   name: string
   type: string
-  defaultW: string
-  defaultH: string
+  position: {
+    defaultT: number | null
+    defaultR: number | null
+  }
 }
 
 export type TWindowsContext = {
   windowsArr: TItem[] | []
-  updateWindowsArr: (item: TItem) => void
+  updateWindowsArr: (item: TItem, index: number) => void
   removeWindow: (name: string, index: number) => void
 }

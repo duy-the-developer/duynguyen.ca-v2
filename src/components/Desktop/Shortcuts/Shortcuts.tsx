@@ -1,3 +1,4 @@
+'use client'
 // Types
 import type { MouseEvent } from 'react'
 import { TItem } from '../../../types/type'
@@ -6,15 +7,12 @@ import { TItem } from '../../../types/type'
 import { MdInsertDriveFile, MdFolder } from 'react-icons/md'
 
 // contexts
-import { useWindowsContext } from '../../../contexts/windows-context'
 
-const DesktopIcon = ({ item }: { item: TItem }) => {
-  const { windowsArr, updateWindowsArr } = useWindowsContext()
+export default ({ item }: { item: TItem }) => {
   const { name, type } = item
 
   const handleDoubleClick = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
-    updateWindowsArr(item)
   }
 
   return (
@@ -28,5 +26,3 @@ const DesktopIcon = ({ item }: { item: TItem }) => {
     </button>
   )
 }
-
-export default DesktopIcon
