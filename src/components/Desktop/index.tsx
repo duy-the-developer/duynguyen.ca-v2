@@ -6,7 +6,7 @@
 // components
 import Shortcuts from './Shortcuts/Shortcuts'
 import WindowDisplay from '../Window'
-import TaskBar from '../TaskBar'
+import TaskBar from './TaskBar'
 import useOpenWindows from './hooks/useOpenWindows'
 
 export default ({ allShortcuts }: { allShortcuts: [] | string[] | false }) => {

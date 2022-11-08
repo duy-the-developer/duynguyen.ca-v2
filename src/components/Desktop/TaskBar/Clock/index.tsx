@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { format } from 'date-fns'
 
 // Components
-import TabArrow from '../../common/TabArrow'
+import TabArrow from '../../../common/TabArrow'
 
 export default () => {
   const [today, setToday] = useState<Date | null>(new Date())
