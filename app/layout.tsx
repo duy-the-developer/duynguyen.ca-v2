@@ -1,4 +1,4 @@
-import TaskBar from '../src/components/TaskBar'
+import TaskBar from '../src/components/Desktop/TaskBar'
 
 export default function RootLayout({
   children,

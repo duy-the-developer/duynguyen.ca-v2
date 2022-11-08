@@ -1,7 +1,7 @@
 import '../styles/globals.css'
 
 import Desktop from '../src/components/Desktop'
-import TaskBar from '../src/components/TaskBar'
+import TaskBar from '../src/components/Desktop/TaskBar'
 
 // data
 import getAllShortcuts from './fetches/getAllShortcuts'

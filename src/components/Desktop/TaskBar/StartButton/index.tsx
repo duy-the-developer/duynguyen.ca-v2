@@ -1,4 +1,4 @@
-import TabArrow from '../../common/TabArrow'
+import TabArrow from '../../../common/TabArrow'
 
 export default () => {
   return (
