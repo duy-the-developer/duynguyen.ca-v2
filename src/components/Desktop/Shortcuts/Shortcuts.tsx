@@ -1,6 +1,6 @@
 'use client'
-// Types
-import type { MouseEvent } from 'react'
+// modules
+import { memo } from 'react'
 
 // icons
 import { MdInsertDriveFile, MdFolder } from 'react-icons/md'
@@ -8,10 +8,19 @@ import Draggable from 'react-draggable'
 
 // contexts
 
-export default ({ name }: { name: string }) => {
+// Types
+import type { MouseEvent, Dispatch, SetStateAction } from 'react'
+type TProps = {
+  name: string
+  addWindow: (newWindow: string) => void
+}
+
+export default memo(({ name, addWindow }: TProps) => {
   const isFile = name.includes('.')
+
   const handleDoubleClick = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
+    addWindow(name)
   }
 
   return (
@@ -26,4 +35,4 @@ export default ({ name }: { name: string }) => {
       </button>
     </Draggable>
   )
-}
+})
