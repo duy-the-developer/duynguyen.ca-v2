@@ -1,22 +1,18 @@
 'use client'
 
 // Modules
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { format } from 'date-fns'
 
 // Components
 import TabArrow from '../../common/TabArrow'
 
 export default () => {
-  const [today, setToday] = useState<Date | null>(null)
+  const [today, setToday] = useState<Date | null>(new Date())
 
   setInterval(() => {
     setToday(new Date())
   }, 1000)
-
-  useEffect(() => {
-    setToday(new Date())
-  }, [])
 
   return (
     <div className='flex flex-nowrap'>

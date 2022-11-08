@@ -5,13 +5,16 @@ import type { MouseEvent } from 'react'
 
 import TabArrow from '../../common/TabArrow'
 
-type Props = {
+type TProps = {
   name: string
   index: number
+  removeWindow: (windowToRemove: string, index: number) => void
 }
 
-export default ({ name }: Props) => {
-  const handleCloseWindow = (e: MouseEvent<HTMLButtonElement>) => {}
+export default ({ name, index, removeWindow }: TProps) => {
+  const handleCloseWindow = (e: MouseEvent<HTMLButtonElement>) => {
+    removeWindow(name, index)
+  }
 
   return (
     <div className='rounded-t-lg flex items-center justify-between bg-dgray dark:bg-dgray dark:text-fg select-none'>
