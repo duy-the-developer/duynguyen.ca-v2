@@ -3,7 +3,7 @@ import type { MouseEvent } from 'react'
 
 // Modules
 
-import TabArrow from '../../common/TabArrow'
+import TabArrow from '../../../common/TabArrow'
 
 type TProps = {
   name: string
