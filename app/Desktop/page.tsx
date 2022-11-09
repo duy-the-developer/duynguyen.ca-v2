@@ -1,8 +1,8 @@
 'use client'
 // components
 import Shortcuts from './Shortcuts'
-import WindowDisplay from './Window'
-import TaskBar from './TaskBar'
+import WindowDisplay from './Window/page'
+import TaskBar from './TaskBar/page'
 import useOpenWindows from './hooks/useOpenWindows'
 
 export default ({ allShortcuts }: { allShortcuts: [] | string[] | false }) => {
