@@ -9,7 +9,7 @@ import Draggable from 'react-draggable'
 // contexts
 
 // Types
-import type { MouseEvent, Dispatch, SetStateAction } from 'react'
+import type { MouseEvent } from 'react'
 type TProps = {
   name: string
   addWindow: (newWindow: string) => void
@@ -19,7 +19,6 @@ export default memo(({ name, addWindow }: TProps) => {
   const isFile = name.includes('.')
 
   const handleDoubleClick = (e: MouseEvent<HTMLButtonElement>) => {
-    console.log('Double Clicked!')
     e.preventDefault()
     addWindow(name)
   }
@@ -28,7 +27,7 @@ export default memo(({ name, addWindow }: TProps) => {
     <Draggable>
       <button
         onDoubleClick={handleDoubleClick}
-        className='w-28 flex flex-col items-center focus:bg-lblue hover:bg-laqua cursor-default dark:focus:bg-blue dark:hover:bg-aqua'
+        className='w-28 flex flex-col items-center focus:bg-lblue hover:bg-laqua dark:focus:bg-blue dark:hover:bg-aqua'
       >
         {isFile && <MdInsertDriveFile className='h-10 w-10' />}
         {!isFile && <MdFolder className='h-10 w-10 text-yellow' />}

@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react'
 
 export default () => {
-  const [openWindows, setOpenWindows] = useState<[] | string[]>([])
+  const [openWindows, setOpenWindows] = useState<string[]>(['README.md'])
 
   const addWindow = useCallback((newWindow: string) => {
     setOpenWindows((state) => [...state, newWindow])
@@ -10,12 +10,16 @@ export default () => {
   const removeWindow = (windowToRemove: string, index: number) => {
     if (index < openWindows.length - 1) {
       setOpenWindows((state) =>
-        state.map((window) => (window === windowToRemove ? '' : window))
+        state.map((window, index) =>
+          index === openWindows.indexOf(windowToRemove) ? '' : window
+        )
       )
       return
     } else {
       setOpenWindows((state) => {
-        const newState = state.filter((window) => window !== windowToRemove)
+        const newState = state.filter(
+          (window, index) => index !== openWindows.indexOf(windowToRemove)
+        )
         if (newState.every((window) => window === '')) {
           return []
         }

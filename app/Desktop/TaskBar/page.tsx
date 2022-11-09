@@ -1,5 +1,5 @@
-import StartButton from './StartButton'
-import Clock from './Clock'
+import StartButton from './StartButton/page'
+import Clock from './Clock/page'
 
 export default () => {
   return (
