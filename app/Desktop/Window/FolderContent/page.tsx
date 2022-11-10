@@ -31,4 +31,5 @@ const FolderContent = ({ path }: { path: string }) => {
   )
 }
 
+
 export default FolderContent

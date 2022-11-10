@@ -14,6 +14,7 @@ type TProps = {
   setDisableDrag: Dispatch<SetStateAction<boolean>>
 }
 
+
 const MenuBar = ({
   cColor,
   cStyle,

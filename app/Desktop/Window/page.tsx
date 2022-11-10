@@ -17,6 +17,7 @@ type TProps = {
   removeWindow: (windowToRemove: string, index: number) => void
 }
 
+
 const Window = memo(({ name, index, removeWindow }: TProps) => {
   const isFile = name.includes('.md')
   const isFolder = !name.includes('.md')

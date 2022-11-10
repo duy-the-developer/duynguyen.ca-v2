@@ -38,3 +38,4 @@ const Shortcuts = memo(({ name, addWindow }: TProps) => {
 })
 
 export default Shortcuts
+
