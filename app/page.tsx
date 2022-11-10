@@ -1,7 +1,7 @@
 import '../styles/globals.css'
 
-import Desktop from './Desktop/page'
-import TaskBar from './Desktop/TaskBar/page'
+import Desktop from './Desktop'
+import TaskBar from './Desktop/TaskBar'
 
 // data
 import useGetAllShortcuts from './hooks/useGetAllShortcuts'
