@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react'
 
 export default () => {
-  const [openWindows, setOpenWindows] = useState<string[]>(['README.md'])
+  const [openWindows, setOpenWindows] = useState<string[]>([])
 
   const addWindow = useCallback((newWindow: string) => {
     setOpenWindows((state) => [...state, newWindow])

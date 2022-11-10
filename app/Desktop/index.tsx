@@ -4,9 +4,14 @@ import Shortcuts from './Shortcuts'
 import WindowDisplay from './Window'
 import TaskBar from './TaskBar'
 import useOpenWindows from './hooks/useOpenWindows'
+import { useEffect } from 'react'
 
 const Desktop = ({ allShortcuts }: { allShortcuts: [] | string[] | false }) => {
   const { openWindows, addWindow, removeWindow } = useOpenWindows()
+
+  useEffect(() => {
+    addWindow('_README.md')
+  }, [])
 
   const thumbNails =
     allShortcuts &&
