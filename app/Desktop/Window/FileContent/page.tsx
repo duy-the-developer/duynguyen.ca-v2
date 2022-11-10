@@ -15,7 +15,7 @@ type TFile = {
   }
 }
 
-export default ({ name }: { name: string }) => {
+const FileContent = ({ name }: { name: string }) => {
   const [file, setFile] = useState<TFile | null>(null)
 
   useEffect(() => {
@@ -35,3 +35,5 @@ export default ({ name }: { name: string }) => {
     </ContentWrapper>
   )
 }
+
+export default FileContent

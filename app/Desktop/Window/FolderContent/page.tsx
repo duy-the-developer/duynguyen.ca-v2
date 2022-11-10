@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import ContentWrapper from '../../../../src/components/common/ContentWrapper'
 import Shortcuts from '../../Shortcuts'
 
-export default ({ path }: { path: string }) => {
+const FolderContent = ({ path }: { path: string }) => {
   const [shortcuts, setShortcuts] = useState<string[] | null>(null)
 
   useEffect(() => {
@@ -30,3 +30,5 @@ export default ({ path }: { path: string }) => {
     </ContentWrapper>
   )
 }
+
+export default FolderContent

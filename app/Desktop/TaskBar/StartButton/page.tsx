@@ -1,6 +1,6 @@
 import TabArrow from '../../../../src/components/common/TabArrow'
 
-export default () => {
+const StartButton = () => {
   return (
     <div className='flex items-center'>
       <div className='flex bg-blue pr-4'>
@@ -18,3 +18,5 @@ export default () => {
     </div>
   )
 }
+
+export default StartButton

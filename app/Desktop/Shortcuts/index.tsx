@@ -15,7 +15,7 @@ type TProps = {
   addWindow: (newWindow: string) => void
 }
 
-export default memo(({ name, addWindow }: TProps) => {
+const Shortcuts = memo(({ name, addWindow }: TProps) => {
   const isFile = name.includes('.')
 
   const handleDoubleClick = (e: MouseEvent<HTMLButtonElement>) => {
@@ -36,3 +36,5 @@ export default memo(({ name, addWindow }: TProps) => {
     </Draggable>
   )
 })
+
+export default Shortcuts
