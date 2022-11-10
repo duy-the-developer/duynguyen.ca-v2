@@ -6,8 +6,8 @@ import Draggable from 'react-draggable'
 
 // Components
 import MenuBar from './MenuBar/page'
-import FileContent from './FileContent/page'
-import FolderContent from './FolderContent/page'
+import FileContent from './FileContent'
+import FolderContent from './FolderContent'
 
 // Types
 
@@ -16,7 +16,6 @@ type TProps = {
   index: number
   removeWindow: (windowToRemove: string, index: number) => void
 }
-
 
 const Window = memo(({ name, index, removeWindow }: TProps) => {
   const isFile = name.includes('.md')
