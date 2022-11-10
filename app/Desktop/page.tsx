@@ -5,7 +5,7 @@ import WindowDisplay from './Window/page'
 import TaskBar from './TaskBar/page'
 import useOpenWindows from './hooks/useOpenWindows'
 
-export default ({ allShortcuts }: { allShortcuts: [] | string[] | false }) => {
+const Desktop = ({ allShortcuts }: { allShortcuts: [] | string[] | false }) => {
   const { openWindows, addWindow, removeWindow } = useOpenWindows()
 
   const thumbNails =
@@ -39,3 +39,5 @@ export default ({ allShortcuts }: { allShortcuts: [] | string[] | false }) => {
     </div>
   )
 }
+
+export default Desktop

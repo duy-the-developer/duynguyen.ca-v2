@@ -17,7 +17,8 @@ type TProps = {
   removeWindow: (windowToRemove: string, index: number) => void
 }
 
-export default memo(({ name, index, removeWindow }: TProps) => {
+
+const Window = memo(({ name, index, removeWindow }: TProps) => {
   const isFile = name.includes('.md')
   const isFolder = !name.includes('.md')
   const [isHidden, setIsHidden] = useState(false)
@@ -48,3 +49,5 @@ export default memo(({ name, index, removeWindow }: TProps) => {
     </Draggable>
   )
 })
+
+export default Window

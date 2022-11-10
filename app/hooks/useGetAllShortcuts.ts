@@ -1,7 +1,7 @@
 import { join } from 'path'
 import fs from 'fs'
 
-export default (sortOption: string) => {
+const useGetAllShortcuts = (sortOption: string) => {
   let result: string[] | [] | false = []
   const postsDir = join(process.cwd(), '_data')
 
@@ -15,3 +15,5 @@ export default (sortOption: string) => {
 
   return result
 }
+
+export default useGetAllShortcuts

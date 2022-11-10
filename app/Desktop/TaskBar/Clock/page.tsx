@@ -7,7 +7,7 @@ import { format } from 'date-fns'
 // Components
 import TabArrow from '../../../../src/components/common/TabArrow'
 
-export default () => {
+const Clock = () => {
   const [today, setToday] = useState<Date | null>(null)
 
   useEffect(() => {
@@ -36,3 +36,5 @@ export default () => {
     </div>
   )
 }
+
+export default Clock

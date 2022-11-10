@@ -14,7 +14,8 @@ type TProps = {
   setDisableDrag: Dispatch<SetStateAction<boolean>>
 }
 
-export default ({
+
+const MenuBar = ({
   cColor,
   cStyle,
   name,
@@ -63,3 +64,5 @@ export default ({
     </div>
   )
 }
+
+export default MenuBar
