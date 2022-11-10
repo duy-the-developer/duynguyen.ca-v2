@@ -10,4 +10,4 @@
 
 # DUYNGUYEN.CA INTERACTIVE PORTFOLIO TERMINAL V2.0
 
-Currently hosted on www.duynguyen.ca
+V1 currently hosted on www.duynguyen.ca
