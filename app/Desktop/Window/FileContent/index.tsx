@@ -21,6 +21,7 @@ type TProps = {
 
 const FileContent = ({ name }: TProps) => {
   const [file, setFile] = useState<TFile | null>(null)
+  const [error, setError] = useState<boolean>(false)
 
   useEffect(() => {
     const paramName = name.includes('/') ? name.split('/').join('$') : name
@@ -28,8 +29,19 @@ const FileContent = ({ name }: TProps) => {
     fetch(`/api/files/${JSON.stringify(paramName)}`)
       .then((res) => res.json())
       .then((parsedRes) => setFile(parsedRes))
-      .catch((error) => console.error(error))
+      .catch((error) => {
+        console.error(error)
+        setError(true)
+      })
   }, [])
+
+  if (error) {
+    return (
+      <ContentWrapper>
+        <p className='text-red'>Error Fetching Data</p>
+      </ContentWrapper>
+    )
+  }
 
   return (
     <ContentWrapper>
