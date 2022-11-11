@@ -9,5 +9,3 @@
 ```
 
 # DUYNGUYEN.CA INTERACTIVE PORTFOLIO TERMINAL V2.0
-
-V1 currently hosted on www.duynguyen.ca

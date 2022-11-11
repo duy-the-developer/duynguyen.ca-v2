@@ -15,13 +15,23 @@ type TFile = {
   }
 }
 
-const FileContent = ({ name }: { name: string }) => {
+type TProps = {
+  name: string
+}
+
+const FileContent = ({ name }: TProps) => {
   const [file, setFile] = useState<TFile | null>(null)
 
   useEffect(() => {
-    fetch(`/api/files/${name}`)
+    let paramName = name
+    if (name.includes('/')) {
+      paramName = name.split('/').join('+')
+    }
+
+    fetch(`/api/files/${paramName}`)
       .then((res) => res.json())
       .then((parsedRes) => setFile(parsedRes))
+      .catch((error) => console.log(error))
   }, [])
 
   return (
