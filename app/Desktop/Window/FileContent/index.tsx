@@ -6,6 +6,7 @@ import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
 
 import ContentWrapper from '../../../../src/components/common/ContentWrapper'
+import Error from '../../../../src/components/common/Error'
 
 type TFile = {
   ok: boolean
@@ -37,9 +38,10 @@ const FileContent = ({ name }: TProps) => {
 
   if (error) {
     return (
-      <ContentWrapper>
-        <p className='text-red'>Error Fetching Data</p>
-      </ContentWrapper>
+      <Error
+        message={`Error Fetching Data 
+        Please Notify Duy at duythedeveloper@gmail.com`}
+      />
     )
   }
 

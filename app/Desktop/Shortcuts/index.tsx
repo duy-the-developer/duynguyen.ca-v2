@@ -29,7 +29,7 @@ const Shortcuts = memo(({ name }: TProps) => {
     <Draggable>
       <button
         onDoubleClick={handleDoubleClick}
-        className='w-28 flex flex-col items-center focus:bg-lblue hover:bg-laqua dark:focus:bg-blue dark:hover:bg-aqua'
+        className='w-28 flex flex-col items-center grow-0 focus:bg-lblue hover:bg-laqua dark:focus:bg-blue dark:hover:bg-aqua'
       >
         {isFile && <MdInsertDriveFile className='h-10 w-10' />}
         {!isFile && <MdFolder className='h-10 w-10 text-yellow' />}

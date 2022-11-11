@@ -17,12 +17,14 @@ const FolderContent = ({ path }: { path: string }) => {
   }, [])
 
   return (
-    <ContentWrapper cStyle='h-[50vh] w-[50vw]'>
+    <ContentWrapper>
       {!shortcuts && <p>Loading...</p>}
-      {shortcuts &&
-        shortcuts.map((each) => {
-          return <Shortcuts name={`${path}/${each}`} />
-        })}
+      <div className='flex'>
+        {shortcuts &&
+          shortcuts.map((each) => {
+            return <Shortcuts name={`${path}/${each}`} />
+          })}
+      </div>
     </ContentWrapper>
   )
 }

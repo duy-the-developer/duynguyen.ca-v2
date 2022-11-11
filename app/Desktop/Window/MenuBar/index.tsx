@@ -1,23 +1,24 @@
+'use client'
 // Types
 import type { MouseEvent, SetStateAction, Dispatch } from 'react'
 
 // Modules
 
 import TabArrow from '../../../../src/components/common/TabArrow'
+import StatusLine from './StatusLine'
 
 type TProps = {
-  cColor?: string
-  cStyle?: string
+  cBgStyle: string
+  cBorderStyle: string
   name: string
   index: number
   removeWindow: (windowToRemove: string, index: number) => void
   setDisableDrag: Dispatch<SetStateAction<boolean>>
 }
 
-
 const MenuBar = ({
-  cColor,
-  cStyle,
+  cBgStyle,
+  cBorderStyle,
   name,
   index,
   removeWindow,
@@ -29,7 +30,7 @@ const MenuBar = ({
 
   return (
     <div
-      className={`sticky top-0 rounded-t-lg flex items-center justify-between bg-dgray dark:bg-dgray dark:text-fg select-none ${cStyle}`}
+      className={`sticky top-0 rounded-t-lg flex items-center justify-between bg-dgray dark:bg-dgray dark:text-fg select-none`}
       onPointerDown={(e) => {
         e.stopPropagation()
         setDisableDrag(false)
@@ -39,14 +40,8 @@ const MenuBar = ({
         setDisableDrag(true)
       }}
     >
-      <div className='flex justify-center items-center'>
-        <div
-          className={`bg-${cColor} flex justify-center items-center w-fit px-4 align-center`}
-        >
-          {name}
-        </div>
-        <TabArrow style={`border-l-${cColor}`} />
-      </div>
+      <StatusLine name={name} cBgStyle={cBgStyle} cBorderStyle={cBorderStyle} />
+
       <div className='flex items-center'>
         <button
           onClick={handleCloseWindow}

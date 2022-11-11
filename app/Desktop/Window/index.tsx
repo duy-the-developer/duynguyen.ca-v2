@@ -35,15 +35,32 @@ const Window = memo(({ name, index, removeWindow }: TProps) => {
           isHidden ? 'hidden' : 'absolute'
         } mr-3 w-fit z-10 focus:z-20 group rounded-t-md cursor-default top-3 left-1/3 text-left`}
       >
-        <MenuBar
-          cColor={isFile ? 'aqua' : 'yellow'}
-          name={name}
-          index={index}
-          removeWindow={removeWindow}
-          setDisableDrag={setDisableDrag}
-        />
-        {isFile && <FileContent name={name} />}
-        {!isFile && <FolderContent path={name} />}
+        {isFile && (
+          <>
+            <MenuBar
+              cBgStyle='bg-aqua'
+              cBorderStyle='border-l-aqua'
+              name={name}
+              index={index}
+              removeWindow={removeWindow}
+              setDisableDrag={setDisableDrag}
+            />
+            <FileContent name={name} />
+          </>
+        )}
+        {isFolder && (
+          <>
+            <MenuBar
+              cBgStyle='bg-yellow'
+              cBorderStyle='border-l-yellow'
+              name={name}
+              index={index}
+              removeWindow={removeWindow}
+              setDisableDrag={setDisableDrag}
+            />
+            <FolderContent path={name} />
+          </>
+        )}
       </div>
     </Draggable>
   )
