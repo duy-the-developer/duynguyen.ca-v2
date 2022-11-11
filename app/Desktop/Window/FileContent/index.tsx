@@ -24,7 +24,6 @@ const FileContent = ({ name }: TProps) => {
 
   useEffect(() => {
     const paramName = name.includes('/') ? name.split('/').join('$') : name
-    console.log(paramName)
 
     fetch(`/api/files/${JSON.stringify(paramName)}`)
       .then((res) => res.json())

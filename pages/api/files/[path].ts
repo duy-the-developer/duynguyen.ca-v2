@@ -15,14 +15,13 @@ const getFileByName = (req: NextApiRequest, res: NextApiResponse) => {
 
   try {
     const fullPath = join(process.cwd(), root, realPath)
-    console.log(fullPath)
 
     const fileContents = fs.readFileSync(fullPath, 'utf8')
 
     const data = matter(fileContents)
     res.status(200).json({ ok: true, data })
   } catch (error) {
-    console.error(error)
+    res.status(500).json({ ok: false, error })
   }
 }
 
