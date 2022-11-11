@@ -23,15 +23,13 @@ const FileContent = ({ name }: TProps) => {
   const [file, setFile] = useState<TFile | null>(null)
 
   useEffect(() => {
-    let paramName = name
-    if (name.includes('/')) {
-      paramName = name.split('/').join('+')
-    }
+    const paramName = name.includes('/') ? name.split('/').join('$') : name
+    console.log(paramName)
 
-    fetch(`/api/files/${paramName}`)
+    fetch(`/api/files/${JSON.stringify(paramName)}`)
       .then((res) => res.json())
       .then((parsedRes) => setFile(parsedRes))
-      .catch((error) => console.log(error))
+      .catch((error) => console.error(error))
   }, [])
 
   return (

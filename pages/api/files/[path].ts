@@ -5,13 +5,15 @@ import matter from 'gray-matter'
 
 const getFileByName = (req: NextApiRequest, res: NextApiResponse) => {
   const root = '_data'
-  const { path } = req.query
-
   //@ts-ignore
-  const realPath = path?.split('+').join('/')
+  const { path }: { path: string } = req.query
+  const parsedPath = JSON.parse(path)
+
+  const realPath = parsedPath?.includes('$')
+    ? parsedPath?.split('$').join('/')
+    : parsedPath
 
   try {
-    //@ts-ignore
     const fullPath = join(process.cwd(), root, realPath)
     console.log(fullPath)
 
