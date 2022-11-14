@@ -11,9 +11,13 @@ const Clock = () => {
   const [today, setToday] = useState<Date | null>(null)
 
   useEffect(() => {
-    setInterval(() => {
-      setToday(new Date())
+    const clock = setInterval(() => {
+      setToday((prevDate) => {
+        prevDate = new Date()
+        return prevDate
+      })
     }, 1000)
+    return () => clearInterval(clock)
   }, [])
 
   return (
