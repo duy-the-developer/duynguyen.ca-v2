@@ -1,29 +1,29 @@
-import { useState, useRef, useEffect } from "react";
-import { useHistory } from "react-router-dom";
-import styled from "styled-components";
+import { useState, useRef, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
+import styled from 'styled-components'
 
-import { Directory } from "./components/Directory";
-import { TerminalMessage } from "./components/TerminalMessage";
-import { siteMap } from "./utils/output";
-import { scrollToBottom } from "./utils/scroll-to-bottom";
+import { Directory } from './components/Directory'
+import { TerminalMessage } from './components/TerminalMessage'
+import { siteMap } from './utils/output'
+import { scrollToBottom } from './utils/scroll-to-bottom'
 
 const App = () => {
-  const [directory, setDirectory] = useState("");
-  const [input, setInput] = useState("");
-  const [inputWidth, setInputWidth] = useState(0);
-  const [output, setOutput] = useState(siteMap["welcome.txt"].content);
-  const [currentFolder, setCurrentFolder] = useState(siteMap);
-  const [scrollHeight, setScrollHeight] = useState();
-  const [isPrinting, setIsPrinting] = useState(true);
+  const [directory, setDirectory] = useState('')
+  const [input, setInput] = useState('')
+  const [inputWidth, setInputWidth] = useState(0)
+  const [output, setOutput] = useState(siteMap['welcome.txt'].content)
+  const [currentFolder, setCurrentFolder] = useState(siteMap)
+  const [scrollHeight, setScrollHeight] = useState()
+  const [isPrinting, setIsPrinting] = useState(true)
 
-  const inputElem = useRef(null);
+  const inputElem = useRef(null)
 
-  let history = useHistory();
+  let history = useHistory()
 
   useEffect(() => {
-    setScrollHeight(document.getElementById("App").scrollHeight);
-    scrollToBottom();
-  }, [scrollHeight, isPrinting]);
+    setScrollHeight(document.getElementById('App').scrollHeight)
+    scrollToBottom()
+  }, [scrollHeight, isPrinting])
 
   const commands = {
     help: {
@@ -34,62 +34,62 @@ const App = () => {
       function: () => {
         return Object.keys(currentFolder)
           .filter((key) => {
-            return key !== "type";
+            return key !== 'type'
           })
           .map((objectName) => {
-            return { type: `message`, content: `${objectName}` };
-          });
+            return { type: `message`, content: `${objectName}` }
+          })
       },
     },
     cd: {
       description: `Change directory - Syntax: 'cd <directory path>' - Example: 'cd /blog'`,
       function: (inputPath) => {
-        if (inputPath === "") {
-          setDirectory("");
-          setCurrentFolder(siteMap);
-          history.push("/");
-          return [];
+        if (inputPath === '') {
+          setDirectory('')
+          setCurrentFolder(siteMap)
+          history.push('/')
+          return []
         }
 
         // 1. iterate over inputPath
-        let localFolder = siteMap;
-        const inputPathArr = inputPath.split("/");
-        const currentPathArr = directory.split("/");
-        currentPathArr.shift();
-        let newPathArr = [];
+        let localFolder = siteMap
+        const inputPathArr = inputPath.split('/')
+        const currentPathArr = directory.split('/')
+        currentPathArr.shift()
+        let newPathArr = []
 
         // 2. for each ".." in the inputPath, remove from currentPath and inputPath
         inputPathArr.forEach((path) => {
-          if (path === "..") {
-            currentPathArr.pop();
+          if (path === '..') {
+            currentPathArr.pop()
           }
-        });
+        })
 
         // remove ".." from input array
         const filteredInputArr = inputPathArr.filter((path) => {
-          return path !== "..";
-        });
+          return path !== '..'
+        })
 
         // 3. construct new path using processed current and input path
-        newPathArr = [...currentPathArr, ...filteredInputArr];
+        newPathArr = [...currentPathArr, ...filteredInputArr]
 
         try {
           for (let i = 0; i < newPathArr.length; i++) {
             if (
               localFolder.hasOwnProperty(newPathArr[i]) &&
-              localFolder[newPathArr[i]].type === "folder"
+              localFolder[newPathArr[i]].type === 'folder'
             ) {
-              localFolder = localFolder[newPathArr[i]];
+              localFolder = localFolder[newPathArr[i]]
             } else {
-              throw `error`;
+              throw new Error('No such file or directory')
             }
           }
 
           // 3. if folder exist in currentFolder then move into this folder
-          history.push(`/${[...newPathArr].join("/")}`);
-          setDirectory(["", ...newPathArr].join("/"));
-          setCurrentFolder(localFolder);
-          return [];
+          history.push(`/${[...newPathArr].join('/')}`)
+          setDirectory(['', ...newPathArr].join('/'))
+          setCurrentFolder(localFolder)
+          return []
         } catch (error) {
           // console.log(error);
           return [
@@ -97,7 +97,7 @@ const App = () => {
               type: `error`,
               content: `[ ERROR ] - cd: no such directory: ${inputPath}`,
             },
-          ];
+          ]
         }
       },
     },
@@ -106,97 +106,97 @@ const App = () => {
       function: (fileName) => {
         if (
           currentFolder.hasOwnProperty(fileName) &&
-          currentFolder[fileName].type === "file"
+          currentFolder[fileName].type === 'file'
         ) {
-          return currentFolder[fileName].content;
+          return currentFolder[fileName].content
         } else {
           return [
             {
               type: `error`,
               content: `[ Error ] - cat: no such file: ${fileName}`,
             },
-          ];
+          ]
         }
       },
     },
     clear: {
       description: `Clear console messages`,
       function: () => {
-        setOutput([]);
+        setOutput([])
       },
     },
-  };
+  }
 
   const resetInput = (e) => {
-    e.preventDefault();
-    setInput("");
-    setInputWidth(`0ch`);
-  };
+    e.preventDefault()
+    setInput('')
+    setInputWidth(`0ch`)
+  }
 
   const displayHelp = () => {
     return Object.keys(commands).map((command) => {
       return {
         type: `message`,
         content: `${command}: ${commands[command].description}`,
-      };
-    });
-  };
+      }
+    })
+  }
 
   const handleSubmit = (e) => {
-    const inputArr = e.target.value.split(" ");
-    const command = inputArr.shift();
-    const inputParam = inputArr.join("");
-    let outputMessage = "";
+    const inputArr = e.target.value.split(' ')
+    const command = inputArr.shift()
+    const inputParam = inputArr.join('')
+    let outputMessage = ''
 
     const previousCommand = {
-      type: "directory",
+      type: 'directory',
       content: `visitor@duynguyen.ca${directory} % ${e.target.value}`,
-    };
+    }
 
-    resetInput(e);
+    resetInput(e)
 
     switch (command) {
-      case "help": {
-        outputMessage = displayHelp();
-        break;
+      case 'help': {
+        outputMessage = displayHelp()
+        break
       }
-      case "ls": {
-        outputMessage = [...commands.list.function(inputParam)];
-        break;
+      case 'ls': {
+        outputMessage = [...commands.list.function(inputParam)]
+        break
       }
       default: {
         if (commands.hasOwnProperty(command)) {
-          outputMessage = [...commands[command].function(inputParam)];
+          outputMessage = [...commands[command].function(inputParam)]
         } else {
           outputMessage = [
             {
               type: `error`,
               content: `[ ERROR ] - '${command}' is not a valid command. Type 'help' for a list of available commands.`,
             },
-          ];
+          ]
         }
       }
     }
 
-    setOutput([...output, previousCommand, ...outputMessage]);
-  };
+    setOutput([...output, previousCommand, ...outputMessage])
+  }
 
   const handleInputChange = (e) => {
-    e.preventDefault();
-    setInput(e.target.value);
-    setInputWidth(`${e.target.value.length}ch`);
-  };
+    e.preventDefault()
+    setInput(e.target.value)
+    setInputWidth(`${e.target.value.length}ch`)
+  }
 
   return (
     <StyledApp
-      id={"App"}
-      className="App"
+      id={'App'}
+      className='App'
       onClick={() => {
-        inputElem.current.focus();
+        inputElem.current.focus()
       }}
     >
       {output.map((message, i) => {
-        const { content, type } = message;
+        const { content, type } = message
         return (
           <TerminalMessage
             key={i}
@@ -206,23 +206,23 @@ const App = () => {
             setScrollHeight={setScrollHeight}
             setIsPrinting={setIsPrinting}
           />
-        );
+        )
       })}
       {!isPrinting ? (
-        <div className="input-container">
+        <div className='input-container'>
           <Directory
-            for="input"
+            for='input'
             content={`visitor@duynguyen.ca${directory} %  `}
           />
           <StyledTerminalInput
             autoFocus
             ref={inputElem}
-            type="text"
+            type='text'
             value={input}
             onChange={handleInputChange}
             onKeyPress={(e) => {
-              if (e.key === "Enter") {
-                handleSubmit(e);
+              if (e.key === 'Enter') {
+                handleSubmit(e)
               }
             }}
             style={{ width: inputWidth }}
@@ -230,10 +230,10 @@ const App = () => {
         </div>
       ) : null}
     </StyledApp>
-  );
-};
+  )
+}
 
-export default App;
+export default App
 
 const StyledApp = styled.div`
   position: absolute;
@@ -255,7 +255,7 @@ const StyledApp = styled.div`
   max-height: calc(100vh - var(--padding-page) * 2 - var(--margin-page) * 2);
   height: calc(100vh - var(--padding-page) * 2 - var(--margin-page) * 2);
   width: 100%;
-`;
+`
 
 const StyledTerminalInput = styled.input`
   @keyframes blinkingCursor {
@@ -274,4 +274,4 @@ const StyledTerminalInput = styled.input`
   outline: none;
   border-right: 10px solid transparent;
   caret-color: transparent;
-`;
+`
