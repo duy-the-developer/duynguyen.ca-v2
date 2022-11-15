@@ -45,7 +45,7 @@
 
   code {
     font-family: 'JetBrains Mono', monospace;
-    @apply text-green font-bold bg-dbghcontrast rounded-sm px-1;
+    @apply text-green font-medium bg-dbghcontrast rounded-sm px-1;
   }
 
   a {
