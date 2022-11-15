@@ -28,6 +28,7 @@ v1 currently hosted on https://duynguyen-ca-v1.vercel.app/
 - [x] Clock and date display in the taskbar
 - [x] Markdown display with `MDX` and `react-markdown`
 - [x] Directory browsing using `Next.js API routes` and `fs`
+- [x] Client-side data fetching/ caching with `useSWR`
 - [] Taskbar with start menu
 - [] Minimize windows to the taskbar
 - [] Customizable settings (theme, desktop background, etc.)
