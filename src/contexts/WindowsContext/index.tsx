@@ -13,9 +13,15 @@ export const WindowsProvider = ({ children }: { children: ReactNode }) => {
 
   const removeWindow = (windowToRemove: string, targetIndex: number) => {
     if (targetIndex < openWindows.length - 1) {
-      setOpenWindows((state) =>
-        state.map((window, index) => (index === targetIndex ? '' : window))
-      )
+      setOpenWindows((state) => {
+        let newState = state.map((window, index) =>
+          index === targetIndex ? '' : window
+        )
+        if (newState.every((window) => window === '')) {
+          newState = []
+        }
+        return newState
+      })
       return
     } else {
       setOpenWindows((state) => {
