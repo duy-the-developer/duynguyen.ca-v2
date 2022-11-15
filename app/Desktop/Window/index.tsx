@@ -33,7 +33,7 @@ const Window = memo(({ name, index, removeWindow }: TProps) => {
         tabIndex={index}
         className={`${
           isHidden ? 'hidden' : 'absolute'
-        } mr-3 w-fit z-10 focus:z-20 group rounded-t-md cursor-default top-3 left-1/3 text-left`}
+        } transition mr-3 w-fit z-10 focus:z-20 group rounded-t-md cursor-default top-3 left-1/3 text-left`}
       >
         {isFile && (
           <>
