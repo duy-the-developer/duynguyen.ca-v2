@@ -1,29 +1,34 @@
 'use client'
 
-import { useContext, useEffect, useState } from 'react'
 import ContentWrapper from '../../../../src/components/common/ContentWrapper'
-import { WindowsContext } from '../../../../src/contexts/WindowsContext'
+import Error from '../../../../src/components/common/Error'
 import Shortcuts from '../../Shortcuts'
 
+import { useGetFolderData } from './hooks/useGetFolderData'
+
 const FolderContent = ({ path }: { path: string }) => {
-  const [shortcuts, setShortcuts] = useState<string[] | null>(null)
+  const { res, isLoading, isError } = useGetFolderData(path)
 
-  const { addWindow } = useContext(WindowsContext)
+  if (isError) {
+    return (
+      <Error
+        message={
+          'Error Fetching Data Please Notify Duy at duythedeveloper@gmail.com'
+        }
+      />
+    )
+  }
 
-  useEffect(() => {
-    fetch(`api/shortcuts/${path}`)
-      .then((res) => res.json())
-      .then((parsedRes) => setShortcuts(parsedRes.data))
-  }, [])
+  if (isLoading) {
+    return <ContentWrapper cStyle='h-full w-full'>Loading...</ContentWrapper>
+  }
 
   return (
     <ContentWrapper cStyle='h-full'>
-      {!shortcuts && <p>Loading...</p>}
       <div className='flex'>
-        {shortcuts &&
-          shortcuts.map((each) => {
-            return <Shortcuts name={`${path}/${each}`} />
-          })}
+        {res!.data.map((each: string) => {
+          return <Shortcuts name={`${path}/${each}`} />
+        })}
       </div>
     </ContentWrapper>
   )

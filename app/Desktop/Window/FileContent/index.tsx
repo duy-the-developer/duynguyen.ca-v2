@@ -1,42 +1,23 @@
 'use client'
 
-import { useEffect, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
 
 import ContentWrapper from '../../../../src/components/common/ContentWrapper'
 import Error from '../../../../src/components/common/Error'
-
-type TFile = {
-  ok: boolean
-  data: {
-    data: string
-    content: string
-  }
-}
+import { useGetFileData } from './hooks/useGetFileData'
 
 type TProps = {
   name: string
 }
 
 const FileContent = ({ name }: TProps) => {
-  const [file, setFile] = useState<TFile | null>(null)
-  const [error, setError] = useState<boolean>(false)
+  const paramName = name.includes('/') ? name.split('/').join('$') : name
 
-  useEffect(() => {
-    const paramName = name.includes('/') ? name.split('/').join('$') : name
+  const { res, isLoading, isError } = useGetFileData(paramName)
 
-    fetch(`/api/files/${JSON.stringify(paramName)}`)
-      .then((res) => res.json())
-      .then((parsedRes) => setFile(parsedRes))
-      .catch((error) => {
-        console.error(error)
-        setError(true)
-      })
-  }, [])
-
-  if (error) {
+  if (isError) {
     return (
       <Error
         message={`Error Fetching Data 
@@ -45,14 +26,14 @@ const FileContent = ({ name }: TProps) => {
     )
   }
 
-  if (!file) {
+  if (isLoading) {
     return <ContentWrapper cStyle='h-full w-full'>Loading...</ContentWrapper>
   }
 
   return (
     <ContentWrapper cStyle='h-[89vh] w-full'>
       <ReactMarkdown rehypePlugins={[rehypeRaw]} remarkPlugins={[remarkGfm]}>
-        {file.data.content}
+        {res!.data.content}
       </ReactMarkdown>
     </ContentWrapper>
   )
