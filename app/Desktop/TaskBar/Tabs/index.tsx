@@ -1,5 +1,5 @@
 import TabArrow from '../../../../src/components/common/TabArrow'
-import { useContext } from 'react'
+import { useContext, memo, useState, useEffect } from 'react'
 import { WindowsContext } from '../../../../src/contexts/WindowsContext'
 import StartButton from '../StartButton'
 
@@ -10,9 +10,19 @@ export const NestTabs = ({
   index: number
   openWindows: string[]
 }) => {
-  const name = openWindows[index]
+  const [name, setName] = useState(openWindows[index])
   const isFile = name?.includes('.md')
-  const isEmpty = openWindows.length == 0
+  const [isEmpty, setIsEmpty] = useState(openWindows.length == 0)
+
+  console.log(openWindows)
+
+  useEffect(() => {
+    setName((prevState) => {
+      prevState = openWindows[index]
+      return prevState
+    })
+    setIsEmpty(openWindows.length == 0)
+  }, [openWindows.length])
 
   return (
     <>
@@ -26,10 +36,13 @@ export const NestTabs = ({
             <StartButton />
           )}
         {index === 0 && <StartButton />}
-        {openWindows.length !== 0 && openWindows[index - 1] && (
-          <NestTabs index={index - 1} openWindows={openWindows} />
+        {openWindows.length !== 0 && index > 0 && (
+          <NestTabs
+            index={index - 1}
+            openWindows={openWindows.filter((name: string) => name !== '')}
+          />
         )}
-        {openWindows[index]}
+        {name}
       </div>
       {openWindows.length !== 0 && (
         <TabArrow style={`${isFile ? 'border-l-aqua' : 'border-l-yellow'}`} />
@@ -45,7 +58,7 @@ const Tabs = () => {
     <div className='flex items-center' id='tab-wrapper'>
       <NestTabs
         index={openWindows.length === 0 ? 0 : openWindows.length - 1}
-        openWindows={openWindows}
+        openWindows={openWindows.filter((name: string) => name !== '')}
       />
     </div>
   )

@@ -19,10 +19,10 @@ export const WindowsProvider = ({ children }: { children: ReactNode }) => {
       return
     } else {
       setOpenWindows((state) => {
-        const newState = state.filter((window, index) => index !== targetIndex)
+        let newState = state.filter((window, index) => index !== targetIndex)
 
         if (newState.every((window) => window === '')) {
-          return []
+          newState = []
         }
         return newState
       })

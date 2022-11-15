@@ -46,7 +46,7 @@ const FileContent = ({ name }: TProps) => {
   }
 
   return (
-    <ContentWrapper cStyle='h-[89vh]'>
+    <ContentWrapper cStyle='h-[89vh] w-full'>
       {!file && 'Loading...'}
       {file && (
         <ReactMarkdown rehypePlugins={[rehypeRaw]} remarkPlugins={[remarkGfm]}>
