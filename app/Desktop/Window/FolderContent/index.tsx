@@ -17,7 +17,7 @@ const FolderContent = ({ path }: { path: string }) => {
   }, [])
 
   return (
-    <ContentWrapper>
+    <ContentWrapper cStyle='h-full'>
       {!shortcuts && <p>Loading...</p>}
       <div className='flex'>
         {shortcuts &&

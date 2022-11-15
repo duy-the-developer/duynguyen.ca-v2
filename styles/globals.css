@@ -1,33 +1,54 @@
 @import url('https://fonts.googleapis.com/css2?family=Cousine:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@200&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-* {
-  font-family: 'Cousine', monospace;
-  font-weight: inherit;
-  background-color: inherit;
-  color: inherit;
-}
+@layer base {
+  * {
+    font-family: 'Cousine', monospace;
+    font-weight: inherit;
+    background-color: inherit;
+    color: inherit;
+  }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: 20px;
+  }
 
-h1 {
-  font-size: 75px;
-}
+  h1 {
+    font-size: 75px;
+    @apply text-lyellow;
+  }
 
-h2 {
-  font-size: 20px;
-}
+  h2 {
+    font-size: 20px;
+    @apply text-orange;
+  }
 
-h3 {
-  font-size: 16px;
+  h3 {
+    font-size: 16px;
+  }
+
+  pre {
+    @apply bg-bg dark:bg-dbghcontrast p-2 rounded-md;
+  }
+
+  pre > code {
+    @apply p-0;
+  }
+
+  code {
+    font-family: 'JetBrains Mono', monospace;
+    @apply text-green font-bold bg-dbghcontrast rounded-sm px-1;
+  }
+
+  a {
+    @apply text-blue;
+  }
 }

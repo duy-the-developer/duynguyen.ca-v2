@@ -11,6 +11,7 @@ module.exports = {
       colors: {
         bg: '#fbf1c7',
         dbg: '#282828',
+        dbghcontrast: '#1d2021',
         fg: '#3c3836',
         dfg: '#ebdbb2',
         red: '#cc241d',

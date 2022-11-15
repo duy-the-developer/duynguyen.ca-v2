@@ -1,34 +1,91 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<pre style='background: transparent'>
+██████╗ ██╗   ██╗██╗   ██╗    ███╗   ██╗ ██████╗ ██╗   ██╗██╗   ██╗███████╗███╗   ██╗
+██╔══██╗██║   ██║╚██╗ ██╔╝    ████╗  ██║██╔════╝ ██║   ██║╚██╗ ██╔╝██╔════╝████╗  ██║
+██║  ██║██║   ██║ ╚████╔╝     ██╔██╗ ██║██║  ███╗██║   ██║ ╚████╔╝ █████╗  ██╔██╗ ██║
+██║  ██║██║   ██║  ╚██╔╝      ██║╚██╗██║██║   ██║██║   ██║  ╚██╔╝  ██╔══╝  ██║╚██╗██║
+██████╔╝╚██████╔╝   ██║       ██║ ╚████║╚██████╔╝╚██████╔╝   ██║   ███████╗██║ ╚████║
+╚═════╝  ╚═════╝    ╚═╝       ╚═╝  ╚═══╝ ╚═════╝  ╚═════╝    ╚═╝   ╚══════╝╚═╝  ╚═══╝
+*************************************************************************************
+</pre>
 
-## Getting Started
+# DUYNGUYEN.CA INTERACTIVE PORTFOLIO TERMINAL V2.0
 
-First, run the development server:
+v1 currently hosted on https://duynguyen-ca-v1.vercel.app/
 
-```bash
-npm run dev
-# or
-yarn dev
+###
+
+---
+
+###
+
+[duynguyen.ca](https://www.duynguyen.ca/) is an interactive portfolio and blog built with `NextJS`, `TypeScript`, `Tailwind CSS` and `react-markdown`. The project started as a way for the author to learn and practice working with new web technologies and act as a hub to showcase his work. NextJS and TypeScript were selected because of their production ready viability, TailWind was selected for its utility-first nature, allowing for quick adjustments and rapid development. Finally, react-markdown is used to parse and display markdown files directly from within the repo's directory, acting as a developer friendly CMS. To deploy a new article, we simply create a new `.md` file in the `_data` folder and push to the `main` branch. Deployment and CI/ CD is handled by Vercel.
+
+## Feature Overview/ Roadmap
+
+- [x] Desktop-like interface
+- [x] Draggable windows and desktop icons with `react-draggable`
+- [x] Resizable windows
+- [x] Clock and date display in the taskbar
+- [x] Markdown display with `MDX` and `react-markdown`
+- [x] Directory browsing using `Next.js API routes` and `fs`
+- [] Taskbar with start menu
+- [] Minimize windows to the taskbar
+- [] Customizable settings (theme, desktop background, etc.)
+- [] Calculator app
+- [] Tic tac toe game
+- [] Chess game
+- [] Chromium browser
+- [] Terminal with xTerm
+- [] Boot sequence on start-up
+
+## Directories
+
+<pre style='background: transparent'>
+.
+├── _README.md
+├── about.md
+├── blog-posts
+│   ├── hello-world.md
+│   └── lorem-ipsum.md
+└── projects
+    └── duynguyen-ca.md
+
+Total: 2 directories, 5 files 
+</pre>
+
+## Clone
+
+```
+// HTTPS
+https://github.com/kefranabg/readme-md-generator.git
+
+// SSH
+git@github.com:kefranabg/readme-md-generator.git
+
+// GitHub CLI
+gh repo clone duy-the-developer/duynguyen.ca
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Installation
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```
+npm install
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Usage
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```
+npm run dev
+```
 
-## Learn More
+## License
 
-To learn more about Next.js, take a look at the following resources:
+This project is MIT licensed.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+###
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+###
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Built with lots of coffee.
