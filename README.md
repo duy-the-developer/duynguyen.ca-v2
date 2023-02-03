@@ -28,15 +28,15 @@ v1 currently hosted on https://duynguyen-ca-v1.vercel.app/
 - [x] Clock and date display in the taskbar
 - [x] Markdown display with `MDX` and `react-markdown`
 - [x] Directory browsing using `Next.js API routes` and `fs`
-- [] Taskbar with start menu
-- [] Minimize windows to the taskbar
-- [] Customizable settings (theme, desktop background, etc.)
-- [] Calculator app
-- [] Tic tac toe game
-- [] Chess game
-- [] Chromium browser
-- [] Terminal with xTerm
-- [] Boot sequence on start-up
+- [ ] Taskbar with start menu
+- [ ] Minimize windows to the taskbar
+- [ ] Customizable settings (theme, desktop background, etc.)
+- [ ] Calculator app
+- [ ] Tic tac toe game
+- [ ] Chess game
+- [ ] Chromium browser
+- [ ] Terminal with xTerm
+- [ ] Boot sequence on start-up
 
 ## Directories
 
